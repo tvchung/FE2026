@@ -1,0 +1,68 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; }
+
+/* HEADER fixed */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+.header a{
+  color: #fff;
+  text-decoration: none;
+  margin-left: 12px;
+  opacity: 0.9;
+}
+.header a:hover{ opacity: 1; }
+
+/* LAYOUT: chừa chỗ cho header */
+.layout{
+  display: flex;
+  height: calc(100vh - 64px);   /* full màn hình trừ header */
+  margin-top: 64px;            /* đẩy xuống dưới header fixed */
+}
+
+/* SIDEBAR sticky */
+.sidebar{
+  width: 260px;
+  padding: 16px;
+  border-right: 1px solid #eee;
+  background: #fafafa;
+
+  position: sticky; /* bám khi cuộn */
+  top: 64px;        /* bám dưới header */
+  align-self: flex-start; /* để sticky hoạt động ổn */
+  height: calc(100vh - 64px); /* chiều cao vừa khung */
+  overflow: auto;   /* nếu menu dài thì sidebar tự cuộn */
+}
+
+.sidebar h3{ margin-bottom: 12px; }
+.sidebar ul{ list-style: none; }
+.sidebar li{ margin: 10px 0; }
+.sidebar a{ text-decoration: none; color: #333; }
+.sidebar a:hover{ text-decoration: underline; }
+
+/* CONTENT scroll */
+.content{
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;            /* CHỈ content cuộn */
+  height: calc(100vh - 64px);  /* đảm bảo content là vùng cuộn */
+}
+
+.post h1{ margin-bottom: 12px; }
+.post p{ margin: 10px 0; line-height: 1.6; }
+
+.dummy p{
+  padding: 10px 0;
+  border-bottom: 1px dashed #ddd;
+}

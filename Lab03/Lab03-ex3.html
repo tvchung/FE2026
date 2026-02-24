@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Dropdown</title>
+    <style>
+        body {
+    font-family: Arial;
+}
+
+/* MENU CHÍNH */
+.menu {
+    list-style: none;
+    background: #333;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu > li {
+    position: relative;  /* Quan trọng */
+    padding: 15px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.menu > li:hover {
+    background: #555;
+}
+
+/* SUBMENU */
+.submenu {
+    position: absolute;   /* Quan trọng */
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    display: none;        /* Ẩn ban đầu */
+}
+
+.submenu li {
+    padding: 10px;
+    color: black;
+}
+
+.submenu li:hover {
+    background: #f2f2f2;
+}
+
+/* HIỆN SUBMENU KHI HOVER */
+.dropdown:hover .submenu {
+    display: block;
+}
+    </style>
+</head>
+<body>
+
+    <ul class="menu">
+        <li>Trang chủ</li>
+
+        <li class="dropdown">
+            Sản phẩm
+            <ul class="submenu">
+                <li>Laptop</li>
+                <li>Điện thoại</li>
+                <li>Phụ kiện</li>
+            </ul>
+        </li>
+
+        <li>Liên hệ</li>
+    </ul>
+
+</body>
+</html>

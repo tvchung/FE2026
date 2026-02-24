@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiết kế một thẻ sản phẩm gồm: Ảnh Tên sản phẩm Giá tiền Nhãn “SALE” nằm góc trên phải (absolute)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin:10 10 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .product-card {
+            width: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* QUAN TRỌNG */
+            transition: 0.3s;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            /* height: 180px; */
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e53935;
+        }
+
+        /* Nhãn SALE */
+        .badge-sale {
+            position: absolute;
+            /* QUAN TRỌNG */
+            top: 10px;
+            right: 10px;
+            background: #e53935;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        <span class="badge-sale">SALE</span>
+
+        <!-- <img src="https://picsum.photos/400/300" alt="Sản phẩm"> -->
+        <img src="images/ao-phong.png" alt="Sản phẩm">
+
+        <div class="product-info">
+            <h3 class="product-name">Áo Thun Cổ Trụ</h3>
+            <p class="product-price">250.000đ</p>
+        </div>
+    </div>
+</body>
+
+</html>

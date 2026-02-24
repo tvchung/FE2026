@@ -1,0 +1,32 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; }
+
+/* Khung menu */
+.menu{
+  background: #111;
+  padding: 12px 0;
+}
+
+/* Danh sách menu - căn giữa */
+.menu-list{
+  list-style: none;
+  display: flex;
+  justify-content: center;  /* CĂN GIỮA */
+  gap: 18px;                /* khoảng cách giữa item */
+}
+
+/* Link */
+.menu-list a{
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 14px;
+  display: inline-block;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+
+/* Hover đổi màu */
+.menu-list a:hover{
+  background: #ffcc00;
+  color: #111;
+}

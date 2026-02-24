@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMaster - Học Lập Trình Web Chuyên Nghiệp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* HEADER STYLING */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2em;
+        }
+
+        /* NAV STYLING */
+        nav {
+            background-color: #2c3e50;
+            padding: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: static;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            max-height: none;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background-color: #667eea;
+            border-bottom: 3px solid #ffc107;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            color: white;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* MAIN LAYOUT */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        /* SECTION STYLING */
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            font-size: 2em;
+        }
+
+        /* ARTICLE STYLING */
+        article {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        article:hover {
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        article h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        article .meta {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        article p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        article a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        article a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* ASIDE STYLING */
+        aside {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        aside h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        aside ul {
+            list-style: none;
+        }
+
+        aside li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        aside li:last-child {
+            border-bottom: none;
+        }
+
+        aside a {
+            color: #667eea;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        aside a:hover {
+            color: #764ba2;
+            padding-left: 5px;
+        }
+
+        .widget {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .widget:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .featured-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .featured-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .featured-box a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* FOOTER STYLING */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 4px solid #667eea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+            color: #ecf0f1;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            grid-column: 1 / -1;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #2c3e50;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+        }
+
+        .cta-button:hover {
+            background-color: #ffb300;
+            transform: scale(1.05);
+        }
+
+        /* SEARCH WIDGET */
+        .search-widget {
+            margin-bottom: 20px;
+        }
+
+        .search-widget input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .search-widget button {
+            width: 100%;
+            margin-top: 8px;
+            padding: 10px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .search-widget button:hover {
+            background-color: #764ba2;
+        }
+
+        /* RESPONSIVE - LARGE SCREENS (1200px+) */
+        @media (min-width: 1200px) {
+            .container-max {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            main {
+                grid-template-columns: 1fr 300px;
+                gap: 30px;
+            }
+
+            /* Ensure nav displays on desktop */
+            .hamburger {
+                display: none !important;
+            }
+
+            nav {
+                position: static !important;
+                max-height: none !important;
+            }
+
+            nav ul {
+                display: flex !important;
+                flex-direction: row;
+                max-height: none !important;
+                padding: 0 !important;
+            }
+
+            nav li {
+                border-bottom: none !important;
+            }
+        }
+
+        /* RESPONSIVE - MEDIUM SCREENS / TABLET (768px - 1199px) */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            main {
+                grid-template-columns: 1fr 280px;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            article {
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+
+            aside {
+                top: 80px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            /* Hide hamburger on tablet */
+            .hamburger {
+                display: none !important;
+            }
+
+            /* Show nav normally on tablet */
+            nav {
+                position: static !important;
+                max-height: none !important;
+            }
+
+            nav ul {
+                display: flex !important;
+                flex-direction: row;
+                max-height: none !important;
+            }
+        }
+
+        /* RESPONSIVE - SMALL SCREENS / MOBILE (< 768px) */
+        @media (max-width: 767px) {
+            /* HEADER */
+            header {
+                position: relative;
+            }
+
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 1.3em;
+                flex: 1;
+            }
+
+            .logo-icon {
+                font-size: 1.4em;
+            }
+
+            .header-content > div:last-child {
+                font-size: 0.7em;
+                display: none;
+            }
+
+            /* HAMBURGER MENU VISIBLE */
+            .hamburger {
+                display: flex;
+            }
+
+            /* NAVIGATION - MOBILE MENU */
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a252f;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 999;
+            }
+
+            nav.mobile-open {
+                max-height: 500px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul {
+                flex-direction: column;
+                flex-wrap: wrap;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                max-width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                width: 100%;
+            }
+
+            nav.mobile-open ul {
+                max-height: 500px;
+                padding: 15px 0;
+            }
+
+            nav li {
+                width: 100%;
+                border-bottom: 1px solid #2c3e50;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                font-size: 0.95em;
+                white-space: normal;
+                transition: 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: #667eea;
+                padding-left: 30px;
+            }
+
+            nav a.active {
+                background-color: #667eea;
+                border-bottom: 3px solid #ffc107;
+                border-left: 4px solid #ffc107;
+                padding-left: 16px;
+            }
+
+            /* MAIN LAYOUT */
+            main {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 15px;
+                margin: 15px auto;
+            }
+
+            /* HERO SECTION */
+            .hero {
+                padding: 40px 15px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+            }
+
+            .hero h1 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 0.95em;
+                margin-bottom: 15px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            /* SECTIONS */
+            section {
+                padding: 15px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+            }
+
+            /* ARTICLES */
+            article {
+                padding: 15px;
+                margin-bottom: 15px;
+                border-left: 3px solid #667eea;
+                border-radius: 5px;
+            }
+
+            article h3 {
+                font-size: 1.2em;
+                margin-bottom: 8px;
+            }
+
+            article .meta {
+                font-size: 0.8em;
+            }
+
+            article p {
+                font-size: 0.9em;
+            }
+
+            article a {
+                font-size: 0.9em;
+            }
+
+            /* TAGS */
+            .tags {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 0.75em;
+                padding: 4px 10px;
+            }
+
+            /* ASIDE SIDEBAR */
+            aside {
+                position: static;
+                top: auto;
+                padding: 15px;
+                border-radius: 5px;
+            }
+
+            aside h3 {
+                font-size: 1.1em;
+                margin-bottom: 12px;
+            }
+
+            .widget {
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+            }
+
+            .search-widget input,
+            .search-widget button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .search-widget button {
+                padding: 8px;
+            }
+
+            .featured-box {
+                padding: 12px;
+            }
+
+            .featured-box h4 {
+                font-size: 1em;
+            }
+
+            aside ul li {
+                padding: 8px 0;
+                font-size: 0.9em;
+            }
+
+            aside a {
+                font-size: 0.9em;
+            }
+
+            /* STATISTICS */
+            section > div[style*="display: grid"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+            }
+
+            section > div[style*="display: grid"] > div {
+                padding: 15px !important;
+                font-size: 0.9em;
+            }
+
+            section > div[style*="display: grid"] > div > div {
+                font-size: 1.8em !important;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 30px 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            footer h4 {
+                font-size: 1.1em;
+            }
+
+            footer ul li {
+                font-size: 0.9em;
+                padding: 6px 0;
+            }
+
+            footer p {
+                font-size: 0.85em;
+            }
+
+            .footer-bottom {
+                font-size: 0.8em;
+                padding-top: 15px;
+            }
+
+            /* SOCIAL ICONS */
+            footer a[style*="font-size: 1.2em"] {
+                font-size: 1em !important;
+            }
+        }
+
+        /* RESPONSIVE - EXTRA SMALL SCREENS (< 480px) */
+        @media (max-width: 479px) {
+            /* HEADER */
+            .header-content {
+                padding: 8px 10px;
+            }
+
+            .logo {
+                font-size: 1.1em;
+                gap: 5px;
+            }
+
+            .logo-icon {
+                font-size: 1.3em;
+            }
+
+            .header-content > div:last-child {
+                font-size: 0.7em;
+                display: none;
+            }
+
+            /* HAMBURGER MENU */
+            .hamburger {
+                padding: 10px 15px;
+            }
+
+            .hamburger span {
+                width: 22px;
+                height: 2.5px;
+                gap: 4px;
+            }
+
+            /* NAVIGATION */
+            nav {
+                top: calc(100% + 0px);
+            }
+
+            nav a {
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+
+            nav a:hover {
+                padding-left: 25px;
+            }
+
+            /* HERO */
+            .hero {
+                padding: 30px 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.3em;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 0.85em;
+            }
+
+            .cta-button {
+                padding: 8px 15px;
+                font-size: 0.8em;
+            }
+
+            /* MAIN */
+            main {
+                padding: 10px;
+                margin: 10px auto;
+            }
+
+            /* SECTIONS */
+            section {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            section h2 {
+                font-size: 1.2em;
+            }
+
+            /* ARTICLE */
+            article {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            article h3 {
+                font-size: 1.1em;
+            }
+
+            article .meta {
+                font-size: 0.75em;
+            }
+
+            article p {
+                font-size: 0.85em;
+            }
+
+            /* TAGS */
+            .tag {
+                font-size: 0.7em;
+                padding: 3px 8px;
+            }
+
+            /* ASIDE */
+            aside {
+                padding: 12px;
+            }
+
+            aside h3 {
+                font-size: 1em;
+            }
+
+            .search-widget input {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+
+            /* STATISTICS */
+            section > div[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 20px 10px;
+            }
+
+            .footer-content {
+                gap: 15px;
+            }
+
+            footer h4 {
+                font-size: 1em;
+            }
+
+            footer ul li {
+                font-size: 0.85em;
+                padding: 5px 0;
+            }
+
+            .footer-bottom {
+                font-size: 0.75em;
+                line-height: 1.4;
+            }
+        }
+
+        /* LANDSCAPE ORIENTATION (Mobile Landscape) */
+        @media (max-height: 600px) and (orientation: landscape) {
+            header {
+                padding: 8px 0;
+            }
+
+            .header-content {
+                padding: 8px 15px;
+            }
+
+            .hero {
+                padding: 20px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.4em;
+                margin-bottom: 8px;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            main {
+                margin: 10px auto;
+                gap: 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            header, nav, aside, footer {
+                display: none;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            section, article {
+                page-break-inside: avoid;
+                box-shadow: none;
+            }
+
+            a {
+                color: #667eea;
+                text-decoration: underline;
+            }
+        }
+
+        /* TAG STYLING */
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #f0f0f0;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">💻</span>
+                <span>DevMaster.edu.vn</span>
+            </div>
+            <div style="color: #ecf0f1; font-size: 0.9em;">
+                ☎️ 0123456789 | 📧 info@devmaster.edu.vn
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="#" class="active">🏠 Trang Chủ</a></li>
+            <li><a href="#">📚 Khóa Học</a></li>
+            <li><a href="#">👨‍🏫 Giáo Viên</a></li>
+            <li><a href="#">📝 Blog</a></li>
+            <li><a href="#">💬 Diễn Đàn</a></li>
+            <li><a href="#">📞 Liên Hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>🎓 Học Lập Trình Web Chuyên Nghiệp</h1>
+            <p>Từ cơ bản đến nâng cao - Hành trang hoàn hảo cho lập trình viên tương lai</p>
+            <button class="cta-button">🚀 Đăng Ký Khóa Học Ngay</button>
+        </section>
+
+        <!-- MAIN CONTENT AREA -->
+        <div>
+            <!-- SECTION 1: FEATURED COURSES -->
+            <section>
+                <h2>🎯 Khóa Học Nổi Bật</h2>
+                
+                <article>
+                    <h3>HTML5 & CSS3 Fundamentals</h3>
+                    <p class="meta">📅 Bắt đầu: 15/02/2026 | ⏱️ 4 tuần | 👥 120 học viên</p>
+                    <p>Khóa học cơ bản về HTML5 và CSS3, tạo nền tảng vững chắc cho lập trình viên web. Bạn sẽ học cách tạo các trang web đẹp, responsive, và dễ bảo trì.</p>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">Frontend</span>
+                    </div>
+                    <a href="#">Xem Chi Tiết →</a>
+                </article>
+
+                <article>
+                    <h3>JavaScript - Lập Trình Tương Tác</h3>
+                    <p class="meta">📅 Bắt đầu: 22/02/2026 | ⏱️ 6 tuần | 👥 95 học viên</p>
+                    <p>Khóa học JavaScript nâng cao, giúp bạn tạo trang web tương tác, xử lý sự kiện, và thao tác DOM. Từ cơ bản đến các khái niệm nâng cao như closure, prototype, async/await.</p>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Frontend</span>
+                        <span class="tag">DOM</span>
+                    </div>
+                    <a href="#">Xem Chi Tiết →</a>
+                </article>
+
+                <article>
+                    <h3>React.js - Frontend Framework Hiện Đại</h3>
+                    <p class="meta">📅 Bắt đầu: 01/03/2026 | ⏱️ 8 tuần | 👥 150 học viên</p>
+                    <p>Khóa học React.js từ cơ bản đến nâng cao. Học cách xây dựng các ứng dụng web hiện đại, quản lý state, routing, và tích hợp API. Dự án thực tế: Xây dựng ứng dụng e-commerce.</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Component</span>
+                    </div>
+                    <a href="#">Xem Chi Tiết →</a>
+                </article>
+            </section>
+
+            <!-- SECTION 2: LATEST BLOG POSTS -->
+            <section>
+                <h2>📰 Bài Viết Mới Nhất</h2>
+                
+                <article>
+                    <h3>HTML5 Semantic Tags - Cách Dùng Đúng</h3>
+                    <p class="meta">✍️ Tác giả: Nguyễn Văn A | 📅 28/01/2026</p>
+                    <p>Tìm hiểu chi tiết về các thẻ semantic HTML5 như &lt;header&gt;, &lt;nav&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;. Bài viết này sẽ giúp bạn viết HTML ngữ pháp tốt, cải thiện SEO và khả năng truy cập của trang web...</p>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Semantic</span>
+                        <span class="tag">Tutorial</span>
+                    </div>
+                    <a href="#">Đọc Tiếp →</a>
+                </article>
+
+                <article>
+                    <h3>CSS Grid vs Flexbox - Chọn Cái Nào?</h3>
+                    <p class="meta">✍️ Tác giả: Trần Thị B | 📅 25/01/2026</p>
+                    <p>So sánh chi tiết giữa CSS Grid và Flexbox. Hiểu được ưu điểm, nhược điểm, và trường hợp sử dụng của mỗi cách tiếp cận để bố cục web. Bao gồm các ví dụ thực tế và demo interactiv...</p>
+                    <div class="tags">
+                        <span class="tag">CSS</span>
+                        <span class="tag">Layout</span>
+                        <span class="tag">Best Practices</span>
+                    </div>
+                    <a href="#">Đọc Tiếp →</a>
+                </article>
+            </section>
+
+            <!-- SECTION 3: STATISTICS -->
+            <section>
+                <h2>📊 Thống Kê Khóa Học</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div style="font-size: 2.5em; color: #667eea; font-weight: bold;">2500+</div>
+                        <p style="color: #666;">Học Viên Đăng Ký</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div style="font-size: 2.5em; color: #667eea; font-weight: bold;">50+</div>
+                        <p style="color: #666;">Khóa Học</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div style="font-size: 2.5em; color: #667eea; font-weight: bold;">30+</div>
+                        <p style="color: #666;">Giáo Viên</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div style="font-size: 2.5em; color: #667eea; font-weight: bold;">95%</div>
+                        <p style="color: #666;">Tỉ Lệ Hài Lòng</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SIDEBAR / ASIDE -->
+        <aside>
+            <!-- SEARCH WIDGET -->
+            <div class="widget search-widget">
+                <input type="text" placeholder="Tìm kiếm khóa học...">
+                <button>🔍 Tìm Kiếm</button>
+            </div>
+
+            <!-- FEATURED WIDGET -->
+            <div class="widget featured-box">
+                <h4>⭐ Khóa Học Hot</h4>
+                <p style="font-size: 0.9em; margin-bottom: 10px;">Giảm giá 50% cho khóa Fullstack</p>
+                <a href="#">Đăng Ký Ngay</a>
+            </div>
+
+            <!-- CATEGORIES WIDGET -->
+            <div class="widget">
+                <h3>📂 Chuyên Đề</h3>
+                <ul>
+                    <li><a href="#">Frontend Development (12)</a></li>
+                    <li><a href="#">Backend Development (8)</a></li>
+                    <li><a href="#">Mobile App (6)</a></li>
+                    <li><a href="#">Database (5)</a></li>
+                    <li><a href="#">DevOps (4)</a></li>
+                    <li><a href="#">Web Design (7)</a></li>
+                </ul>
+            </div>
+
+            <!-- RECENT POSTS WIDGET -->
+            <div class="widget">
+                <h3>📌 Bài Viết Được Xem Nhiều</h3>
+                <ul>
+                    <li><a href="#">ES6 Arrow Function Giải Thích</a></li>
+                    <li><a href="#">Async/Await vs Promise</a></li>
+                    <li><a href="#">React Hooks Chi Tiết</a></li>
+                    <li><a href="#">RESTful API Best Practices</a></li>
+                    <li><a href="#">Git Workflow Đúng Cách</a></li>
+                </ul>
+            </div>
+
+            <!-- INSTRUCTOR SPOTLIGHT -->
+            <div class="widget">
+                <h3>👨‍🏫 Giáo Viên Nổi Bật</h3>
+                <div style="text-align: center; padding: 15px;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">👤</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 5px;">Nguyễn Văn A</h4>
+                    <p style="font-size: 0.85em; color: #666; margin-bottom: 10px;">Senior Frontend Developer</p>
+                    <a href="#" style="color: #667eea; text-decoration: none;">Xem Profile →</a>
+                </div>
+            </div>
+
+            <!-- NEWSLETTER WIDGET -->
+            <div class="widget featured-box" style="text-align: center;">
+                <h4>📧 Newsletter</h4>
+                <p style="font-size: 0.9em; margin-bottom: 10px;">Nhận bài viết mới mỗi tuần</p>
+                <input type="email" placeholder="Email của bạn" style="width: 100%; padding: 8px; border: none; border-radius: 4px; margin-bottom: 8px;">
+                <button style="width: 100%; padding: 8px; background-color: #ffc107; color: #2c3e50; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Đăng Ký</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <!-- COMPANY INFO -->
+            <div>
+                <h4>💼 Về DevMaster</h4>
+                <p style="color: #bdc3c7; margin-bottom: 15px;">DevMaster là nền tảng học lập trình web hàng đầu Việt Nam, cung cấp các khóa học chất lượng cao từ các giáo viên có kinh nghiệm.</p>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#" style="color: #667eea; font-size: 1.2em; text-decoration: none;">f</a>
+                    <a href="#" style="color: #667eea; font-size: 1.2em; text-decoration: none;">𝕏</a>
+                    <a href="#" style="color: #667eea; font-size: 1.2em; text-decoration: none;">in</a>
+                    <a href="#" style="color: #667eea; font-size: 1.2em; text-decoration: none;">▶</a>
+                </div>
+            </div>
+
+            <!-- COURSES -->
+            <div>
+                <h4>📚 Khóa Học</h4>
+                <ul>
+                    <li><a href="#">HTML5 & CSS3</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">React.js</a></li>
+                    <li><a href="#">Node.js</a></li>
+                    <li><a href="#">Database</a></li>
+                    <li><a href="#">Xem Tất Cả</a></li>
+                </ul>
+            </div>
+
+            <!-- RESOURCES -->
+            <div>
+                <h4>📖 Tài Nguyên</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Video Tutorial</a></li>
+                    <li><a href="#">Code Snippets</a></li>
+                    <li><a href="#">Cheat Sheets</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- SUPPORT -->
+            <div>
+                <h4>💬 Hỗ Trợ</h4>
+                <ul>
+                    <li><a href="#">Liên Hệ Chúng Tôi</a></li>
+                    <li><a href="#">Trung Tâm Trợ Giúp</a></li>
+                    <li><a href="#">Diễn Đàn Cộng Đồng</a></li>
+                    <li><a href="#">Báo Cáo Vấn Đề</a></li>
+                    <li><a href="#">Điều Khoản Dịch Vụ</a></li>
+                    <li><a href="#">Chính Sách Bảo Mật</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 DevMaster.edu.vn - Nền tảng học lập trình web chuyên nghiệp | Thiết kế bằng HTML5 & CSS3</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR RESPONSIVE NAVIGATION -->
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('#navbar a');
+
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navbar.classList.toggle('mobile-open');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('mobile-open');
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navbar.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnHamburger && navbar.classList.contains('mobile-open')) {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('mobile-open');
+            }
+        });
+
+        // Handle window resize - close menu on desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767) {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('mobile-open');
+            }
+        });
+    </script>
+</body>
+</html>

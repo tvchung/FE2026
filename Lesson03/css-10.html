@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layout hiện đại với flexbox</title>
+    <style>
+        .container {  
+            margin: 1rem;
+            padding: 1rem;
+            display: flex;  
+            flex-direction: row;      /* row | column */  
+            justify-content: center;  /* căn ngang */  
+            align-items: center;      /* căn dọc */  
+            gap: 20px;
+            border: 1px solid gray;
+        }
+        .item {  
+            background-color: green;  
+            color: yellow;
+            padding: 1rem 1.5rem;
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            font-size: 2rem;  
+            border: 2px solid yellow;  
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Ngôn ngữ Lập trình Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            color: #ecf0f1;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 10px 18px;
+            background-color: #f0f0f0;
+            border-radius: 25px;
+            transition: 0.3s;
+            font-weight: 500;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background-color: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            font-size: 2em;
+        }
+        
+        section h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            padding-left: 15px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+            transition: 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .feature-card h4 {
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+        
+        .feature-card p {
+            color: #ecf0f1;
+            margin-bottom: 0;
+            font-size: 0.95em;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .tech-list {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+        }
+        
+        .tech-list ul {
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+        
+        .tech-list li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            color: #2c3e50;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .highlight strong {
+            color: #ff6b6b;
+        }
+        
+        .tech-category {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+        }
+        
+        .tech-category h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .tech-item {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 2px solid #667eea;
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+        
+        footer {
+            background-color: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer p {
+            margin: 8px 0;
+            color: #ecf0f1;
+        }
+        
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .advantage-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .disadvantage-box {
+            background-color: #ffebee;
+            padding: 15px;
+            border-left: 4px solid #f44336;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💻 Giới thiệu Ngôn ngữ Lập trình Web</h1>
+        <p>Tìm hiểu các công nghệ và môi trường phát triển ứng dụng web hiện đại</p>
+    </header>
+    
+    <nav>
+        <a href="#environments">Môi trường Tạo Web</a>
+        <a href="#static-dynamic">Web Tĩnh & Động</a>
+        <a href="#technologies">Công nghệ Web</a>
+        <a href="#html-css">HTML5 & CSS3</a>
+    </nav>
+    
+    <div class="container">
+        <!-- PHẦN 1: MÔI TRƯỜNG TẠO TRANG WEB -->
+        <section id="environments">
+            <h2>🔧 Các Môi trường Tạo Trang Web</h2>
+            
+            <p>Môi trường phát triển web (Web Development Environment) là tập hợp các công cụ, thư viện và nền tảng giúp lập trình viên tạo, kiểm thử và triển khai các ứng dụng web.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🖥️</div>
+                    <h4>Frontend (Giao diện)</h4>
+                    <p>Phía máy khách: HTML, CSS, JavaScript. Chạy trực tiếp trên trình duyệt web.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">⚙️</div>
+                    <h4>Backend (Máy chủ)</h4>
+                    <p>Phía máy chủ: PHP, Python, Node.js, Java, C#. Xử lý dữ liệu và logic ứng dụng.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">🗄️</div>
+                    <h4>Database (Cơ sở dữ liệu)</h4>
+                    <p>Lưu trữ dữ liệu: MySQL, PostgreSQL, MongoDB. Quản lý thông tin ứng dụng.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h4>Web Server</h4>
+                    <p>Máy chủ web: Apache, Nginx. Xử lý yêu cầu HTTP từ người dùng.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">📦</div>
+                    <h4>Framework & Library</h4>
+                    <p>Các khung công tác: React, Vue.js, Laravel, Django. Tăng tốc độ phát triển.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">🛠️</div>
+                    <h4>Dev Tools</h4>
+                    <p>Công cụ phát triển: VS Code, Git, npm, Docker. Quản lý code và deployment.</p>
+                </div>
+            </div>
+            
+            <h3>Cấu trúc Ứng dụng Web Điển hình</h3>
+            <div class="tech-list">
+                <ul>
+                    <li><strong>Client Layer (Lớp giao diện):</strong> Giao diện người dùng trên trình duyệt</li>
+                    <li><strong>Application Layer (Lớp ứng dụng):</strong> Logic xử lý nghiệp vụ</li>
+                    <li><strong>Data Layer (Lớp dữ liệu):</strong> Lưu trữ và quản lý dữ liệu</li>
+                    <li><strong>Infrastructure Layer (Lớp cơ sở hạ tầng):</strong> Máy chủ, network, và tài nguyên</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- PHẦN 2: WEB TĨNH VÀ WEB ĐỘNG -->
+        <section id="static-dynamic">
+            <h2>📊 Thế nào là Web Tĩnh và Web Động</h2>
+            
+            <h3>Web Tĩnh (Static Web)</h3>
+            <div class="advantage-box">
+                <strong>Định nghĩa:</strong> Website tĩnh là trang web mà nội dung không thay đổi theo từng người dùng hoặc thời gian. Nội dung giống nhau cho tất cả mọi người truy cập.
+            </div>
+            
+            <p><strong>Đặc điểm:</strong></p>
+            <div class="tech-list">
+                <ul>
+                    <li>Chỉ sử dụng HTML và CSS</li>
+                    <li>Nội dung được cố định sẵn</li>
+                    <li>Tải nhanh, tiêu thụ ít tài nguyên</li>
+                    <li>Không có cơ sở dữ liệu</li>
+                    <li>Dễ bảo mật</li>
+                </ul>
+            </div>
+            
+            <p><strong>Ví dụ:</strong> Blog đơn giản, landing page, portfolio, trang giới thiệu công ty</p>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Ưu điểm</th>
+                    <th>Nhược điểm</th>
+                </tr>
+                <tr>
+                    <td>Tải trang rất nhanh</td>
+                    <td>Khó cập nhật nội dung</td>
+                </tr>
+                <tr>
+                    <td>Chi phí hosting rẻ</td>
+                    <td>Không thể tương tác động với người dùng</td>
+                </tr>
+                <tr>
+                    <td>Bảo mật cao</td>
+                    <td>Không support người dùng đăng nhập</td>
+                </tr>
+                <tr>
+                    <td>Dễ triển khai</td>
+                    <td>Không phù hợp các ứng dụng phức tạp</td>
+                </tr>
+            </table>
+            
+            <hr style="margin: 30px 0; border: none; border-top: 2px solid #ddd;">
+            
+            <h3>Web Động (Dynamic Web)</h3>
+            <div class="advantage-box">
+                <strong>Định nghĩa:</strong> Website động là trang web mà nội dung thay đổi tùy theo người dùng, thời gian, và các tương tác. Nội dung được tạo động từ cơ sở dữ liệu.
+            </div>
+            
+            <p><strong>Đặc điểm:</strong></p>
+            <div class="tech-list">
+                <ul>
+                    <li>Sử dụng HTML, CSS, JavaScript + Backend (PHP, Python, Node.js, ...)</li>
+                    <li>Nội dung thay đổi theo yêu cầu</li>
+                    <li>Có cơ sở dữ liệu</li>
+                    <li>Hỗ trợ đăng nhập, bình luận, tương tác</li>
+                    <li>Có thể quản lý nội dung qua CMS</li>
+                </ul>
+            </div>
+            
+            <p><strong>Ví dụ:</strong> Facebook, Gmail, YouTube, Amazon, Shopee, WordPress</p>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Ưu điểm</th>
+                    <th>Nhược điểm</th>
+                </tr>
+                <tr>
+                    <td>Nội dung cập nhật tự động</td>
+                    <td>Tải trang chậm hơn</td>
+                </tr>
+                <tr>
+                    <td>Tương tác cao với người dùng</td>
+                    <td>Chi phí hosting cao hơn</td>
+                </tr>
+                <tr>
+                    <td>Hỗ trợ đa người dùng</td>
+                    <td>Bảo mật phức tạp hơn</td>
+                </tr>
+                <tr>
+                    <td>Phù hợp các ứng dụng lớn</td>
+                    <td>Yêu cầu kỹ năng lập trình cao</td>
+                </tr>
+            </table>
+            
+            <h3>So sánh Web Tĩnh và Web Động</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Tiêu chí</th>
+                    <th>Web Tĩnh</th>
+                    <th>Web Động</th>
+                </tr>
+                <tr>
+                    <td><strong>Công nghệ</strong></td>
+                    <td>HTML, CSS</td>
+                    <td>HTML, CSS, JavaScript + Backend</td>
+                </tr>
+                <tr>
+                    <td><strong>Cơ sở dữ liệu</strong></td>
+                    <td>Không có</td>
+                    <td>Có</td>
+                </tr>
+                <tr>
+                    <td><strong>Tốc độ tải</strong></td>
+                    <td>Rất nhanh ⚡</td>
+                    <td>Chậm hơn ⏱️</td>
+                </tr>
+                <tr>
+                    <td><strong>Tương tác</strong></td>
+                    <td>Ít tương tác</td>
+                    <td>Tương tác cao</td>
+                </tr>
+                <tr>
+                    <td><strong>Chi phí</strong></td>
+                    <td>Rẻ</td>
+                    <td>Đắt hơn</td>
+                </tr>
+                <tr>
+                    <td><strong>Sử dụng</strong></td>
+                    <td>Landing page, Portfolio</td>
+                    <td>Ứng dụng web, Mạng xã hội</td>
+                </tr>
+            </table>
+        </section>
+        
+        <!-- PHẦN 3: CÔNG NGHỆ LẬP TRÌNH WEB -->
+        <section id="technologies">
+            <h2>🎯 Tóm tắt Công nghệ Lập trình Web</h2>
+            
+            <h3>Kiến trúc Web ba tầng (3-Tier Architecture)</h3>
+            <div class="highlight">
+                <p>Hầu hết các ứng dụng web hiện đại sử dụng kiến trúc ba tầng để tách biệt các lớp và dễ bảo trì.</p>
+            </div>
+            
+            <div class="tech-category">
+                <h4>🎨 Tầng 1: Presentation Layer (Frontend)</h4>
+                <p>Giao diện người dùng - những gì khách hàng nhìn thấy trên trình duyệt.</p>
+                <div class="tech-items">
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">React</span>
+                    <span class="tech-item">Vue.js</span>
+                    <span class="tech-item">Angular</span>
+                </div>
+            </div>
+            
+            <div class="tech-category">
+                <h4>⚙️ Tầng 2: Application/Business Layer (Backend)</h4>
+                <p>Xử lý logic nghiệp vụ - nơi xử lý các yêu cầu từ frontend.</p>
+                <div class="tech-items">
+                    <span class="tech-item">PHP</span>
+                    <span class="tech-item">Python (Django, Flask)</span>
+                    <span class="tech-item">Node.js (Express)</span>
+                    <span class="tech-item">Java</span>
+                    <span class="tech-item">C# (.NET)</span>
+                    <span class="tech-item">Ruby (Rails)</span>
+                </div>
+            </div>
+            
+            <div class="tech-category">
+                <h4>🗄️ Tầng 3: Data Layer (Database)</h4>
+                <p>Lưu trữ và quản lý dữ liệu - cơ sở dữ liệu của ứng dụng.</p>
+                <div class="tech-items">
+                    <span class="tech-item">MySQL</span>
+                    <span class="tech-item">PostgreSQL</span>
+                    <span class="tech-item">MongoDB</span>
+                    <span class="tech-item">Oracle</span>
+                    <span class="tech-item">SQL Server</span>
+                    <span class="tech-item">Redis</span>
+                </div>
+            </div>
+            
+            <h3>Các Framework và Thư viện Phổ biến</h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Frontend Frameworks</h4>
+                    <p><strong>React:</strong> Thư viện JS do Facebook phát triển<br>
+                    <strong>Vue.js:</strong> Framework JS nhẹ và dễ học<br>
+                    <strong>Angular:</strong> Framework JS mạnh mẽ của Google</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Backend Frameworks</h4>
+                    <p><strong>Laravel:</strong> Framework PHP hiện đại<br>
+                    <strong>Django:</strong> Framework Python đầy đủ<br>
+                    <strong>Express.js:</strong> Framework Node.js nhẹ</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Tools & Platform</h4>
+                    <p><strong>Git:</strong> Quản lý version code<br>
+                    <strong>Docker:</strong> Container hóa ứng dụng<br>
+                    <strong>AWS/Azure:</strong> Cloud hosting</p>
+                </div>
+            </div>
+            
+            <h3>Quy trình Phát triển Web (Web Development Workflow)</h3>
+            <div class="tech-list">
+                <ul>
+                    <li><strong>1. Planning (Lập kế hoạch):</strong> Xác định yêu cầu, tính năng, scope</li>
+                    <li><strong>2. Design (Thiết kế):</strong> UI/UX design, wireframe, mockup</li>
+                    <li><strong>3. Development (Phát triển):</strong> Viết code frontend, backend, database</li>
+                    <li><strong>4. Testing (Kiểm thử):</strong> Unit test, integration test, QA</li>
+                    <li><strong>5. Deployment (Triển khai):</strong> Đưa lên production server</li>
+                    <li><strong>6. Maintenance (Bảo trì):</strong> Cập nhật, fix bug, hỗ trợ người dùng</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- PHẦN 4: HTML5 VÀ CSS3 -->
+        <section id="html-css">
+            <h2>🌟 Giới thiệu HTML5 và CSS3</h2>
+            
+            <h3>HTML5 (HyperText Markup Language 5)</h3>
+            
+            <p><strong>HTML5</strong> là phiên bản mới nhất của HTML, được phát hành năm 2014. Nó mang đến nhiều tính năng mới và cải thiện so với các phiên bản cũ.</p>
+            
+            <p><strong>Các tính năng chính của HTML5:</strong></p>
+            <div class="tech-list">
+                <ul>
+                    <li><strong>Semantic Tags (Thẻ ngữ nghĩa):</strong> &lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;, &lt;footer&gt; giúp mô tả rõ ràng cấu trúc trang</li>
+                    <li><strong>Multimedia Support:</strong> Hỗ trợ &lt;video&gt;, &lt;audio&gt; mà không cần plugin Flash</li>
+                    <li><strong>Canvas & SVG:</strong> Vẽ đồ họa 2D động trực tiếp trên trình duyệt</li>
+                    <li><strong>Geolocation API:</strong> Lấy thông tin vị trí người dùng</li>
+                    <li><strong>Web Storage:</strong> Lưu dữ liệu cục bộ với localStorage và sessionStorage</li>
+                    <li><strong>Form Enhancements:</strong> Input types mới như email, date, number, range</li>
+                    <li><strong>WebSocket:</strong> Kết nối hai chiều real-time</li>
+                    <li><strong>Offline Support:</strong> Làm việc offline với Service Workers</li>
+                </ul>
+            </div>
+            
+            <p><strong>Ưu điểm của HTML5:</strong></p>
+            <div class="advantage-box">
+                ✓ Hỗ trợ multimedia tốt hơn<br>
+                ✓ Cấu trúc ngữ pháp tốt hơn<br>
+                ✓ SEO tốt hơn<br>
+                ✓ API phong phú<br>
+                ✓ Tương thích trình duyệt tốt
+            </div>
+            
+            <hr style="margin: 30px 0; border: none; border-top: 2px solid #ddd;">
+            
+            <h3>CSS3 (Cascading Style Sheets Level 3)</h3>
+            
+            <p><strong>CSS3</strong> là phiên bản nâng cấp của CSS, mang đến các khả năng styling mạnh mẽ và hiện đại hơn.</p>
+            
+            <p><strong>Các tính năng chính của CSS3:</strong></p>
+            <div class="tech-list">
+                <ul>
+                    <li><strong>Flexbox & Grid:</strong> Layout mạnh mẽ và linh hoạt</li>
+                    <li><strong>Animations & Transitions:</strong> Tạo hiệu ứng chuyển động mượt mà</li>
+                    <li><strong>Transformations:</strong> Quay, phóng to, dịch chuyển phần tử</li>
+                    <li><strong>Gradients:</strong> Gradient tuyến tính và hình tròn</li>
+                    <li><strong>Box-shadow & Text-shadow:</strong> Bóng cho box và text</li>
+                    <li><strong>Rounded Corners:</strong> Border-radius tạo góc bo tròn</li>
+                    <li><strong>Media Queries:</strong> Responsive design cho nhiều kích thước màn hình</li>
+                    <li><strong>Multiple Backgrounds:</strong> Nhiều hình nền cùng lúc</li>
+                    <li><strong>Custom Properties:</strong> CSS Variables</li>
+                </ul>
+            </div>
+            
+            <p><strong>Ưu điểm của CSS3:</strong></p>
+            <div class="advantage-box">
+                ✓ Tạo hiệu ứng phức tạp mà không cần JavaScript<br>
+                ✓ Responsive design dễ hơn<br>
+                ✓ Code sạch hơn, bảo trì tốt hơn<br>
+                ✓ Tính năng nâng cao cho styling<br>
+                ✓ Hỗ trợ tốt trên các trình duyệt hiện đại
+            </div>
+            
+            <h3>HTML5 + CSS3 = Trang Web Hiện đại</h3>
+            <div class="highlight">
+                <p>Sự kết hợp của <strong>HTML5</strong> (cấu trúc ngữ nghĩa) và <strong>CSS3</strong> (styling hiện đại) tạo nên các trang web đẹp, nhanh, và dễ bảo trì. Đây là nền tảng cơ bản cho bất kỳ ứng dụng web nào.</p>
+            </div>
+            
+            <p><strong>Ví dụ tính năng kết hợp:</strong></p>
+            <div class="tech-list">
+                <ul>
+                    <li>Sử dụng semantic HTML5 tags cho SEO tốt</li>
+                    <li>CSS3 Media Queries cho responsive design</li>
+                    <li>CSS3 Flexbox/Grid cho layout hiện đại</li>
+                    <li>CSS3 Animations cho UX tuyệt vời</li>
+                    <li>HTML5 Form validation cho UX tốt</li>
+                    <li>HTML5 LocalStorage + CSS3 animation cho offline experience</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- TÓMLƯỢC -->
+        <section>
+            <h2>📚 Tóm Lược</h2>
+            
+            <p>Lập trình web là một lĩnh vực rộng lớn bao gồm:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Frontend Development</h4>
+                    <p>Tạo giao diện với HTML5, CSS3, JavaScript. Định hình trải nghiệm người dùng.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Backend Development</h4>
+                    <p>Xây dựng logic ứng dụng với PHP, Python, Node.js. Xử lý dữ liệu và request.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Full-Stack Development</h4>
+                    <p>Kết hợp cả frontend và backend. Phát triển ứng dụng web đầu đủ.</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1em; color: #667eea;">
+                <strong>🎯 Bắt đầu với HTML5 và CSS3 là bước đầu tiên tốt nhất để trở thành lập trình viên web!</strong>
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Giới thiệu Lập trình Web - DevMaster.edu.vn</p>
+        <p>Nền tảng học lập trình web chuyên nghiệp</p>
+    </footer>
+</body>
+</html>

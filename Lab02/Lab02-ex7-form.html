@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đăng ký du lịch</title>
+</head>
+<body>
+
+<form action="#" method="post">
+  <table border="1" cellpadding="8" cellspacing="0" align="center" width="760" bgcolor="#fff6c9">
+
+    <!-- Tiêu đề -->
+    <tr>
+      <th colspan="2" align="center">
+        <font size="6" color="#2b5a8a"><b>Đăng ký du lịch</b></font>
+      </th>
+    </tr>
+
+    <!-- Họ và tên -->
+    <tr>
+      <td width="180"><font color="#1c6aa8"><b>Họ và tên</b></font></td>
+      <td>
+        <input type="text" name="hoten" value="Pham Ngoc Cam Dao" size="60" required>
+      </td>
+    </tr>
+
+    <!-- Địa chỉ -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Địa chỉ</b></font></td>
+      <td>
+        <input type="text" name="diachi" value="227 Nguyễn Văn Cừ" size="40" required>
+      </td>
+    </tr>
+
+    <!-- Điện thoại -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Điện thoại</b></font></td>
+      <td>
+        <input type="tel" name="dienthoai" value="8351056" size="25" required>
+      </td>
+    </tr>
+
+    <!-- Khách Việt Nam -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Khách Việt Nam</b></font></td>
+      <td>
+        <input type="checkbox" name="khachvn" checked>
+      </td>
+    </tr>
+
+    <!-- Chọn tour (có nhóm miền) -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Chọn tour</b></font></td>
+      <td>
+        <select name="tour" size="1">
+          <optgroup label="Miền Bắc">
+            <option>Hà Nội - Hạ Long - Sapa</option>
+            <option>Hà Nội - Chùa Hương - Ninh Bình</option>
+            <option>Hà Nội - Cát Bà - Tuần Châu</option>
+          </optgroup>
+
+          <optgroup label="Miền Trung">
+            <option>Huế - Bạch Mã - Đà Nẵng</option>
+            <option>Nha Trang - Đà Lạt</option>
+            <option selected>Buôn mê thuột - Gia lai - Kontum</option>
+          </optgroup>
+
+          <optgroup label="Miền Nam">
+            <option>TP.HCM - Cần Thơ - Cà Mau</option>
+            <option>TP.HCM - Mỹ Tho</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+
+    <!-- Phương tiện -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Phương tiện</b></font></td>
+      <td>
+        <input type="radio" name="phuongtien" id="maybay" value="Máy bay">
+        <label for="maybay">Máy bay</label>
+        &nbsp;&nbsp;&nbsp;
+        <input type="radio" name="phuongtien" id="xeoto" value="Xe ô tô" checked>
+        <label for="xeoto">Xe ô tô</label>
+      </td>
+    </tr>
+
+    <!-- Số lượng đoàn khách (khung đỏ trong hình) -->
+    <tr>
+      <td colspan="2" align="center">
+        <fieldset>
+          <legend><b>Số lượng đoàn khách</b></legend>
+
+          <table border="0" cellpadding="6" cellspacing="0" align="center">
+            <tr>
+              <td align="right"><b>Người lớn</b></td>
+              <td><input type="number" name="nguoilon" value="6" min="0" size="5"></td>
+              <td width="40"></td>
+              <td align="right"><b>Trẻ em</b></td>
+              <td><input type="number" name="treem" value="4" min="0" size="5"></td>
+            </tr>
+          </table>
+
+        </fieldset>
+      </td>
+    </tr>
+
+    <!-- Ghi chú thêm -->
+    <tr>
+      <td><font color="#1c6aa8"><b>Ghi chú thêm</b></font></td>
+      <td>
+        <textarea name="ghichu" rows="3" cols="55">Có 2 trẻ em dưới 6 tuổi
+Có 2 người ăn chay</textarea>
+      </td>
+    </tr>
+
+    <!-- Nút -->
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" value="Đồng ý">
+      </td>
+    </tr>
+
+    <!-- Thông báo -->
+    <tr>
+      <td colspan="2" align="center">
+        <font color="#d98900"><b>Bạn đã đăng ký thành công!!!</b></font>
+      </td>
+    </tr>
+
+  </table>
+</form>
+
+</body>
+</html>

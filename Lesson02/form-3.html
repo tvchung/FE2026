@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+        div label {
+            display: inline-block;
+            width: 5rem;
+        }
+        div input+label {
+            display: inline-block;
+            width: auto;
+        }
+        i{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="/register" method="post">
+        <h2>Đăng ký tài khoản</h2>
+        <div>
+            <label for="name">Họ tên</label>
+            <input id="name" name="name" type="text" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+        </div>
+        <div>
+            <label for="pass">Mật khẩu</label>
+            <input id="pass" name="pass" type="password" required minlength="6">
+        </div>
+        <div>
+            <label>Giới tính</label>
+            <label><input type="radio" name="gender" value="male" required checked> 
+                    Nam</label>
+            <label><input type="radio" name="gender" value="female"> Nữ</label>
+        </div>
+        <div>
+            <label for=""></label>
+            <input type="checkbox" name="agree" id="agree" required>
+            <label for="agree"><i>Tôi đồng ý điều khoản dịch vụ</i></label>
+        </div>
+        <div>
+            <button type="submit">Đăng ký</button>
+            <button type="reset">Nhập lại</button>
+        </div>
+    </form>
+</body>
+</html>

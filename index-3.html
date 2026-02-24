@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Thẻ Bố cục Nội dung HTML5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #ecf0f1;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            background-color: #2c3e50;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #667eea;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        section h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        section ul, section ol {
+            margin-left: 20px;
+        }
+        
+        section li {
+            margin-bottom: 8px;
+        }
+        
+        .tag-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .tag-item h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .tag-item code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tag-item p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .example {
+            background-color: #ecf0f1;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin-top: 10px;
+            border-left: 3px solid #764ba2;
+        }
+        
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tag-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+            transition: 0.3s;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tag-card strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .tag-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .info-box {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .highlight-box {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .practice-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .layout-diagram {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            color: #2c3e50;
+            overflow-x: auto;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th {
+            background-color: #667eea;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .step-box {
+            background-color: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #764ba2;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            background-color: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        .semantic-structure {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .box-model {
+            border: 2px dashed #667eea;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎨 Các Thẻ Bố cục Nội dung trong HTML5</h1>
+        <p>Tìm hiểu các thẻ layout, semantic tags, và cách sử dụng chúng hiệu quả</p>
+    </header>
+    
+    <nav>
+        <a href="#introduction">Giới thiệu</a>
+        <a href="#generic-tags">Thẻ Chung</a>
+        <a href="#semantic-tags">Thẻ Semantic</a>
+        <a href="#comparison">So sánh</a>
+        <a href="#practice">Thực hành</a>
+    </nav>
+    
+    <div class="container">
+        <!-- PHẦN 1: GIỚI THIỆU -->
+        <section id="introduction">
+            <h2>📚 Giới thiệu các Thẻ Bố cục Nội dung</h2>
+            
+            <p>Các thẻ bố cục nội dung (Layout & Content Structure Tags) trong HTML5 được chia thành hai loại chính:</p>
+            
+            <h3>1. Thẻ Chung (Generic Tags)</h3>
+            <p>Những thẻ không có ý nghĩa ngữ nghĩa cụ thể, dùng để nhóm và định dạng nội dung:</p>
+            <ul>
+                <li><code>&lt;div&gt;</code> - Khối (block-level)</li>
+                <li><code>&lt;span&gt;</code> - Dòng (inline)</li>
+                <li><code>&lt;label&gt;</code> - Nhãn cho form</li>
+                <li><code>&lt;details&gt;</code> - Chi tiết có thể mở rộng</li>
+                <li><code>&lt;summary&gt;</code> - Tiêu đề cho details</li>
+            </ul>
+            
+            <h3>2. Thẻ Ngữ Nghĩa (Semantic Tags) - HTML5</h3>
+            <p>Những thẻ có ý nghĩa rõ ràng, giúp mô tả cấu trúc trang và cải thiện SEO:</p>
+            <ul>
+                <li><code>&lt;header&gt;</code> - Phần đầu trang</li>
+                <li><code>&lt;nav&gt;</code> - Điều hướng</li>
+                <li><code>&lt;main&gt;</code> - Nội dung chính</li>
+                <li><code>&lt;section&gt;</code> - Phần nội dung</li>
+                <li><code>&lt;article&gt;</code> - Bài viết độc lập</li>
+                <li><code>&lt;aside&gt;</code> - Nội dung phụ (sidebar)</li>
+                <li><code>&lt;footer&gt;</code> - Phần chân trang</li>
+            </ul>
+            
+            <div class="info-box">
+                <strong>💡 Tính chất của các thẻ:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Block-level:</strong> Chiếm toàn bộ chiều rộng có sẵn (&lt;div&gt;, &lt;section&gt;, &lt;header&gt;)</li>
+                    <li><strong>Inline:</strong> Chỉ chiếm không gian cần thiết (&lt;span&gt;, &lt;label&gt;)</li>
+                    <li><strong>Inline-block:</strong> Hỗn hợp của cả hai (&lt;img&gt;, &lt;button&gt;)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- PHẦN 2: CÁC THẺ CHUNG -->
+        <section id="generic-tags">
+            <h2>🔧 Giới thiệu Thẻ Chung (Generic Tags)</h2>
+            
+            <h3>1. Thẻ &lt;div&gt; - Khối (Division)</h3>
+            <div class="tag-item">
+                <h3><code>&lt;div&gt;...&lt;/div&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Nhóm các phần tử thành khối (block-level container) để dễ dàng styling hoặc tổ chức.</p>
+                <p><strong>Đặc điểm:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Là thẻ block-level, chiếm toàn bộ chiều rộng</li>
+                    <li>Không có ý nghĩa ngữ nghĩa cụ thể</li>
+                    <li>Được dùng để tạo layout hoặc nhóm nội dung liên quan</li>
+                    <li>Thường được styling bằng CSS hoặc có class/id</li>
+                </ul>
+                <div class="example">&lt;div class="container"&gt;
+  &lt;h1&gt;Tiêu đề&lt;/h1&gt;
+  &lt;p&gt;Nội dung trang web&lt;/p&gt;
+&lt;/div&gt;</div>
+                <p><strong>Ví dụ sử dụng:</strong> Layout wrapper, card container, button group</p>
+            </div>
+            
+            <h3>2. Thẻ &lt;span&gt; - Dòng (Span)</h3>
+            <div class="tag-item">
+                <h3><code>&lt;span&gt;...&lt;/span&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Nhóm các phần tử inline (trong dòng) để styling hoặc tổ chức.</p>
+                <p><strong>Đặc điểm:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Là thẻ inline, chỉ chiếm không gian cần thiết</li>
+                    <li>Thường dùng để highlight hay styling một phần text</li>
+                    <li>Không bắt đầu dòng mới</li>
+                    <li>Thường kết hợp với CSS để tạo hiệu ứng</li>
+                </ul>
+                <div class="example">&lt;p&gt;Đây là &lt;span style="color: red;"&gt;văn bản màu đỏ&lt;/span&gt; trong đoạn&lt;/p&gt;</div>
+                <p><strong>Ví dụ sử dụng:</strong> Highlight text, color text, icon wrapper, badge</p>
+            </div>
+            
+            <h3>3. Thẻ &lt;label&gt; - Nhãn</h3>
+            <div class="tag-item">
+                <h3><code>&lt;label&gt;...&lt;/label&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Tạo nhãn cho các phần tử input trong form, giúp tăng khả năng truy cập.</p>
+                <p><strong>Đặc điểm:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Liên kết với input qua thuộc tính <code>for</code></li>
+                    <li>Khi click vào label, focus sẽ chuyển sang input tương ứng</li>
+                    <li>Rất hữu ích cho accessibility (khả năng truy cập)</li>
+                </ul>
+                <div class="example">&lt;label for="username"&gt;Tên đăng nhập:&lt;/label&gt;
+&lt;input type="text" id="username" name="username"&gt;</div>
+                <p><strong>Ví dụ sử dụng:</strong> Form labels, checkbox labels, radio button labels</p>
+            </div>
+            
+            <h3>4. Thẻ &lt;details&gt; và &lt;summary&gt; - Chi tiết Mở rộng (HTML5)</h3>
+            <div class="tag-item">
+                <h3><code>&lt;details&gt;...&lt;/details&gt;</code> và <code>&lt;summary&gt;...&lt;/summary&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Tạo phần nội dung có thể mở rộng/Thu gọn mà không cần JavaScript.</p>
+                <p><strong>Đặc điểm:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li><code>&lt;details&gt;</code> là container cho nội dung có thể ẩn/hiện</li>
+                    <li><code>&lt;summary&gt;</code> là tiêu đề có thể click để mở/đóng</li>
+                    <li>Trình duyệt tự động thêm mũi tên (disclosure triangle)</li>
+                    <li>Không cần CSS hoặc JavaScript để hoạt động</li>
+                </ul>
+                <div class="example">&lt;details&gt;
+  &lt;summary&gt;Nhấp để xem chi tiết&lt;/summary&gt;
+  &lt;p&gt;Nội dung chi tiết sẽ hiển thị khi mở rộng&lt;/p&gt;
+&lt;/details&gt;</div>
+                <p><strong>Ví dụ sử dụng:</strong> FAQ section, accordion, collapsible menu, help text</p>
+            </div>
+            
+            <div class="highlight-box">
+                <strong>⚠️ Lưu ý:</strong> Thẻ &lt;details&gt; &lt;summary&gt; là tính năng HTML5 mới, hỗ trợ tốt trên các trình duyệt hiện đại nhưng cần test trên các trình duyệt cũ.
+            </div>
+        </section>
+        
+        <!-- PHẦN 3: CÁC THẺ SEMANTIC -->
+        <section id="semantic-tags">
+            <h2>🏛️ Giới thiệu Thẻ Semantic (Semantic Tags) - HTML5</h2>
+            
+            <p>Các thẻ semantic giúp mô tả ý nghĩa cụ thể của nội dung, cải thiện SEO, và dễ bảo trì code.</p>
+            
+            <h3>Cấu trúc Trang Web Semantic Tiêu chuẩn</h3>
+            <div class="layout-diagram">&lt;header&gt;
+  &lt;h1&gt;Tên trang web&lt;/h1&gt;
+  &lt;nav&gt;Menu điều hướng&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Phần 1&lt;/h2&gt;
+    &lt;article&gt;Bài viết 1&lt;/article&gt;
+  &lt;/section&gt;
+  
+  &lt;section&gt;
+    &lt;h2&gt;Phần 2&lt;/h2&gt;
+    &lt;article&gt;Bài viết 2&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;aside&gt;Sidebar/Nội dung phụ&lt;/aside&gt;
+
+&lt;footer&gt;Phần chân trang&lt;/footer&gt;</div>
+            
+            <h3>1. Thẻ &lt;header&gt; - Phần Đầu</h3>
+            <div class="tag-item">
+                <h3><code>&lt;header&gt;...&lt;/header&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Xác định phần đầu trang hoặc phần đầu của section.</p>
+                <p><strong>Nội dung thường có:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Logo công ty</li>
+                    <li>Tiêu đề trang</li>
+                    <li>Menu điều hướng chính</li>
+                    <li>Thanh tìm kiếm</li>
+                </ul>
+                <div class="example">&lt;header&gt;
+  &lt;img src="logo.png" alt="Logo"&gt;
+  &lt;h1&gt;DevMaster.edu.vn&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</div>
+            </div>
+            
+            <h3>2. Thẻ &lt;nav&gt; - Điều Hướng</h3>
+            <div class="tag-item">
+                <h3><code>&lt;nav&gt;...&lt;/nav&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Chứa các liên kết điều hướng chính của trang.</p>
+                <p><strong>Nội dung thường có:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Menu chính</li>
+                    <li>Breadcrumb navigation</li>
+                    <li>Pagination</li>
+                    <li>Tab navigation</li>
+                </ul>
+                <div class="example">&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Trang Chủ&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;Về Chúng Tôi&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Liên Hệ&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</div>
+            </div>
+            
+            <h3>3. Thẻ &lt;main&gt; - Nội Dung Chính</h3>
+            <div class="tag-item">
+                <h3><code>&lt;main&gt;...&lt;/main&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Chứa nội dung chính của trang.</p>
+                <p><strong>Quy tắc quan trọng:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Chỉ có một thẻ &lt;main&gt; duy nhất trên một trang</li>
+                    <li>Không nên đặt &lt;main&gt; bên trong &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, &lt;aside&gt;</li>
+                    <li>Chứa các &lt;section&gt;, &lt;article&gt;, nội dung độc lập</li>
+                </ul>
+                <div class="example">&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Tiêu đề chính&lt;/h2&gt;
+    &lt;p&gt;Nội dung trang...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</div>
+            </div>
+            
+            <h3>4. Thẻ &lt;section&gt; - Phần Nội Dung</h3>
+            <div class="tag-item">
+                <h3><code>&lt;section&gt;...&lt;/section&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Nhóm nội dung liên quan thành các phần riêng biệt.</p>
+                <p><strong>Khi sử dụng:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Khi nội dung có liên quan và cần một tiêu đề</li>
+                    <li>Chia trang thành các phần logic khác nhau</li>
+                    <li>Mỗi section thường bắt đầu bằng heading (&lt;h1&gt;-&lt;h6&gt;)</li>
+                </ul>
+                <div class="example">&lt;section&gt;
+  &lt;h2&gt;Dịch Vụ Của Chúng Tôi&lt;/h2&gt;
+  &lt;p&gt;Mô tả dịch vụ...&lt;/p&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/section&gt;</div>
+            </div>
+            
+            <h3>5. Thẻ &lt;article&gt; - Bài Viết</h3>
+            <div class="tag-item">
+                <h3><code>&lt;article&gt;...&lt;/article&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Chứa nội dung độc lập, có thể được sử dụng lại ở các nơi khác.</p>
+                <p><strong>Ví dụ nội dung:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Bài viết blog</li>
+                    <li>Tin tức</li>
+                    <li>Comment</li>
+                    <li>Product card</li>
+                    <li>Forum post</li>
+                </ul>
+                <div class="example">&lt;article&gt;
+  &lt;h3&gt;Tiêu đề bài viết&lt;/h3&gt;
+  &lt;p class="meta"&gt;Ngày: 29/01/2026&lt;/p&gt;
+  &lt;p&gt;Nội dung bài viết...&lt;/p&gt;
+&lt;/article&gt;</div>
+            </div>
+            
+            <h3>6. Thẻ &lt;aside&gt; - Nội Dung Phụ</h3>
+            <div class="tag-item">
+                <h3><code>&lt;aside&gt;...&lt;/aside&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Chứa nội dung phụ, liên quan nhưng không chính yếu.</p>
+                <p><strong>Ví dụ nội dung:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Sidebar</li>
+                    <li>Advertisement</li>
+                    <li>Related posts</li>
+                    <li>Widget</li>
+                    <li>Trang trí trang</li>
+                </ul>
+                <div class="example">&lt;aside&gt;
+  &lt;h3&gt;Bài Viết Liên Quan&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Bài 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Bài 2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</div>
+            </div>
+            
+            <h3>7. Thẻ &lt;footer&gt; - Chân Trang</h3>
+            <div class="tag-item">
+                <h3><code>&lt;footer&gt;...&lt;/footer&gt;</code></h3>
+                <p><strong>Mục đích:</strong> Chứa thông tin chân trang.</p>
+                <p><strong>Nội dung thường có:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Bản quyền © 2026</li>
+                    <li>Liên kết footer</li>
+                    <li>Thông tin liên hệ</li>
+                    <li>Social media links</li>
+                    <li>Sitemap</li>
+                </ul>
+                <div class="example">&lt;footer&gt;
+  &lt;p&gt;&copy; 2026 DevMaster.edu.vn&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Điều khoản&lt;/a&gt; |
+    &lt;a href="#"&gt;Bảo mật&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;</div>
+            </div>
+        </section>
+        
+        <!-- PHẦN 4: SO SÁNH -->
+        <section id="comparison">
+            <h2>⚖️ So Sánh: Thẻ Chung vs Thẻ Semantic</h2>
+            
+            <h3>Bảng So Sánh</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Đặc điểm</th>
+                    <th>Thẻ Chung (&lt;div&gt;, &lt;span&gt;)</th>
+                    <th>Thẻ Semantic (&lt;header&gt;, &lt;nav&gt;, ...)</th>
+                </tr>
+                <tr>
+                    <td><strong>Ý nghĩa</strong></td>
+                    <td>Không có ý nghĩa cụ thể</td>
+                    <td>Mô tả rõ ràng nội dung</td>
+                </tr>
+                <tr>
+                    <td><strong>SEO</strong></td>
+                    <td>Không giúp SEO</td>
+                    <td>Giúp cải thiện SEO</td>
+                </tr>
+                <tr>
+                    <td><strong>Khả năng truy cập</strong></td>
+                    <td>Khó với screen reader</td>
+                    <td>Tốt với accessibility tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Bảo trì code</strong></td>
+                    <td>Code khó hiểu</td>
+                    <td>Code rõ ràng, dễ hiểu</td>
+                </tr>
+                <tr>
+                    <td><strong>Cần CSS</strong></td>
+                    <td>Thường cần CSS styling</td>
+                    <td>Có style mặc định, cần ít CSS</td>
+                </tr>
+                <tr>
+                    <td><strong>Ví dụ</strong></td>
+                    <td>&lt;div class="header"&gt;</td>
+                    <td>&lt;header&gt;</td>
+                </tr>
+            </table>
+            
+            <h3>Ví dụ Thực Tế: Trang Blog</h3>
+            <p><strong>Cách cũ (không semantic):</strong></p>
+            <div class="example">&lt;div id="header"&gt;
+  &lt;div class="logo"&gt;Logo&lt;/div&gt;
+  &lt;div class="nav"&gt;Menu&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content"&gt;
+  &lt;div class="post"&gt;
+    &lt;h2&gt;Tiêu đề bài&lt;/h2&gt;
+    &lt;div class="post-content"&gt;Nội dung&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="footer"&gt;
+  &lt;p&gt;Bản quyền&lt;/p&gt;
+&lt;/div&gt;</div>
+            
+            <p><strong>Cách HTML5 (semantic):</strong></p>
+            <div class="example">&lt;header&gt;
+  &lt;img src="logo.png" alt="Logo"&gt;
+  &lt;nav&gt;Menu&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Tiêu đề bài&lt;/h2&gt;
+    &lt;p&gt;Nội dung&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;Bản quyền&lt;/p&gt;
+&lt;/footer&gt;</div>
+            
+            <div class="highlight-box">
+                <strong>✅ Lợi ích của Semantic HTML5:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Code sạch, dễ hiểu hơn</li>
+                    <li>SEO tốt hơn (search engine dễ hiểu)</li>
+                    <li>Accessibility tốt hơn (screen reader hiểu rõ)</li>
+                    <li>Bảo trì code dễ dàng hơn</li>
+                    <li>Làm việc nhóm dễ dàng hơn</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- PHẦN 5: THỰC HÀNH -->
+        <section id="practice">
+            <h2>👨‍💻 Thực Hành: Sử dụng Visual Studio Code</h2>
+            
+            <h3>Yêu cầu công cụ</h3>
+            <ul>
+                <li>Visual Studio Code (VS Code) - <strong>Tải miễn phí từ code.visualstudio.com</strong></li>
+                <li>Live Server Extension (tùy chọn, giúp xem thay đổi real-time)</li>
+                <li>Trình duyệt web (Chrome, Firefox, Edge, ...)</li>
+            </ul>
+            
+            <h3>Bước 1: Cài đặt Live Server Extension</h3>
+            <div class="step-box">
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">1</span>
+                    Mở VS Code
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">2</span>
+                    Nhấn <code>Ctrl+Shift+X</code> hoặc click vào Extension icon (sidebar trái)
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">3</span>
+                    Tìm kiếm "Live Server" của Ritwick Dey
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">4</span>
+                    Click nút "Install"
+                </div>
+            </div>
+            
+            <h3>Bước 2: Tạo File HTML</h3>
+            <div class="step-box">
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">1</span>
+                    Mở VS Code, tạo folder mới: File → Open Folder
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">2</span>
+                    Tạo file mới: Right-click → New File, đặt tên "index.html"
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">3</span>
+                    Nhập ! và nhấn Tab để auto-complete boilerplate HTML5
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">4</span>
+                    Thay đổi lang="en" thành lang="vi"
+                </div>
+            </div>
+            
+            <h3>Bước 3: Bài Tập 1 - Tạo Trang Web Semantic</h3>
+            <div class="practice-box">
+                <strong>📝 Yêu cầu:</strong> Tạo trang web với cấu trúc semantic đầy đủ
+                
+                <p style="margin-top: 15px;"><strong>Các thành phần cần có:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>&lt;header&gt; với logo và tiêu đề trang</li>
+                    <li>&lt;nav&gt; với menu (Trang Chủ, Dịch Vụ, Về Chúng Tôi, Liên Hệ)</li>
+                    <li>&lt;main&gt; chứa nội dung chính</li>
+                    <li>2 &lt;section&gt; với tiêu đề khác nhau</li>
+                    <li>3 &lt;article&gt; mô tả sản phẩm/dịch vụ</li>
+                    <li>&lt;aside&gt; hiển thị "Thông tin liên hệ"</li>
+                    <li>&lt;footer&gt; với bản quyền</li>
+                </ul>
+                
+                <div class="example" style="margin-top: 15px;">&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Trang Web Của Tôi&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; }
+        body { font-family: Arial; line-height: 1.6; }
+        header { background: #333; color: white; padding: 20px; }
+        nav { background: #ddd; padding: 10px; }
+        nav a { margin-right: 15px; text-decoration: none; }
+        main { display: grid; grid-template-columns: 3fr 1fr; gap: 20px; padding: 20px; }
+        article { background: #f4f4f4; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        footer { background: #333; color: white; text-align: center; padding: 20px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;💼 Công Ty Của Tôi&lt;/h1&gt;
+    &lt;/header&gt;
+    
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Trang Chủ&lt;/a&gt;
+        &lt;a href="#"&gt;Dịch Vụ&lt;/a&gt;
+        &lt;a href="#"&gt;Về Chúng Tôi&lt;/a&gt;
+        &lt;a href="#"&gt;Liên Hệ&lt;/a&gt;
+    &lt;/nav&gt;
+    
+    &lt;main&gt;
+        &lt;div&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Dịch Vụ Của Chúng Tôi&lt;/h2&gt;
+                &lt;article&gt;
+                    &lt;h3&gt;Dịch Vụ 1&lt;/h3&gt;
+                    &lt;p&gt;Mô tả dịch vụ 1...&lt;/p&gt;
+                &lt;/article&gt;
+                &lt;article&gt;
+                    &lt;h3&gt;Dịch Vụ 2&lt;/h3&gt;
+                    &lt;p&gt;Mô tả dịch vụ 2...&lt;/p&gt;
+                &lt;/article&gt;
+            &lt;/section&gt;
+            
+            &lt;section&gt;
+                &lt;h2&gt;Các Sản Phẩm&lt;/h2&gt;
+                &lt;article&gt;
+                    &lt;h3&gt;Sản Phẩm 1&lt;/h3&gt;
+                    &lt;p&gt;Mô tả sản phẩm...&lt;/p&gt;
+                &lt;/article&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;📞 Thông Tin Liên Hệ&lt;/h3&gt;
+            &lt;p&gt;Email: info@example.com&lt;/p&gt;
+            &lt;p&gt;SĐT: 0123456789&lt;/p&gt;
+            &lt;p&gt;Địa chỉ: TP. Hồ Chí Minh&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2026 Công Ty Của Tôi. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+            </div>
+            
+            <h3>Bước 4: Chạy với Live Server</h3>
+            <div class="step-box">
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">1</span>
+                    Right-click vào file index.html
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">2</span>
+                    Chọn "Open with Live Server"
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">3</span>
+                    Trình duyệt sẽ mở tự động tại localhost:5500
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <span class="step-number">4</span>
+                    Khi lưu file, trang sẽ tự động reload
+                </div>
+            </div>
+            
+            <h3>Bước 5: Bài Tập 2 - Tạo FAQ với &lt;details&gt;</h3>
+            <div class="practice-box">
+                <strong>📝 Yêu cầu:</strong> Tạo phần FAQ (Câu Hỏi Thường Gặp) sử dụng &lt;details&gt; &lt;summary&gt;
+                
+                <div class="example" style="margin-top: 15px;">&lt;section&gt;
+    &lt;h2&gt;❓ Câu Hỏi Thường Gặp&lt;/h2&gt;
+    
+    &lt;details&gt;
+        &lt;summary&gt;HTML5 là gì?&lt;/summary&gt;
+        &lt;p&gt;HTML5 là phiên bản mới nhất của HTML, ra mắt năm 2014...&lt;/p&gt;
+    &lt;/details&gt;
+    
+    &lt;details&gt;
+        &lt;summary&gt;CSS3 dùng để làm gì?&lt;/summary&gt;
+        &lt;p&gt;CSS3 được dùng để style các phần tử HTML...&lt;/p&gt;
+    &lt;/details&gt;
+    
+    &lt;details&gt;
+        &lt;summary&gt;JavaScript là gôn ngôn ngữ gì?&lt;/summary&gt;
+        &lt;p&gt;JavaScript là ngôn ngữ lập trình chạy trên trình duyệt...&lt;/p&gt;
+    &lt;/details&gt;
+&lt;/section&gt;</div>
+            </div>
+            
+            <h3>Bước 6: Bài Tập 3 - Form với &lt;label&gt;</h3>
+            <div class="practice-box">
+                <strong>📝 Yêu cầu:</strong> Tạo form liên hệ với &lt;label&gt; được liên kết đúng
+                
+                <div class="example" style="margin-top: 15px;">&lt;form&gt;
+    &lt;div&gt;
+        &lt;label for="fullname"&gt;Họ và Tên:&lt;/label&gt;
+        &lt;input type="text" id="fullname" name="fullname" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label for="message"&gt;Tin nhắn:&lt;/label&gt;
+        &lt;textarea id="message" name="message" rows="5"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;input type="checkbox" id="agree" name="agree"&gt;
+        &lt;label for="agree"&gt;Tôi đồng ý với các điều khoản&lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Gửi&lt;/button&gt;
+&lt;/form&gt;</div>
+            </div>
+            
+            <h3>Lợi ích của Live Server</h3>
+            <ul style="margin-left: 20px;">
+                <li>⚡ Auto-reload khi lưu file</li>
+                <li>🔄 Sync qua các thiết bị</li>
+                <li>🐛 Dễ debug với Developer Tools (F12)</li>
+                <li>📱 Test responsive trên mobile</li>
+            </ul>
+        </section>
+        
+        <!-- PHẦN 6: MẸO & BEST PRACTICES -->
+        <section>
+            <h2>💡 Mẹo & Best Practices</h2>
+            
+            <h3>Quy tắc Khi Sử dụng Các Thẻ Bố cục</h3>
+            <div class="tag-item">
+                <p>✅ <strong>Luôn sử dụng semantic tags</strong> - Giúp SEO, accessibility, và code dễ hiểu</p>
+            </div>
+            
+            <div class="tag-item">
+                <p>✅ <strong>Mỗi trang chỉ một &lt;header&gt;, &lt;footer&gt;, &lt;main&gt;</strong> - Nhưng có thể có nhiều &lt;section&gt;, &lt;article&gt;</p>
+            </div>
+            
+            <div class="tag-item">
+                <p>✅ <strong>Sử dụng &lt;section&gt; khi nội dung có tiêu đề</strong> - Nếu không có tiêu đề, dùng &lt;div&gt;</p>
+            </div>
+            
+            <div class="tag-item">
+                <p>✅ <strong>Luôn liên kết &lt;label&gt; với &lt;input&gt;</strong> - Cải thiện accessibility</p>
+            </div>
+            
+            <div class="tag-item">
+                <p>✅ <strong>Dùng &lt;article&gt; cho nội dung có thể tái sử dụng</strong> - Blog post, comment, product card</p>
+            </div>
+            
+            <div class="tag-item">
+                <p>❌ <strong>Không lạm dụng &lt;div&gt;</strong> - Thay thế bằng semantic tags nếu có thể</p>
+            </div>
+            
+            <h3>Cấu trúc Heading Tốt</h3>
+            <p><strong>Sai:</strong> &lt;h1&gt; → &lt;h3&gt; → &lt;h5&gt; (bỏ qua levels)</p>
+            <p><strong>Đúng:</strong> &lt;h1&gt; → &lt;h2&gt; → &lt;h3&gt; (thứ tự tuần tự)</p>
+            
+            <div class="example">✅ Cấu trúc tốt:
+&lt;h1&gt;Tiêu đề trang (chỉ một)&lt;/h1&gt;
+  &lt;h2&gt;Tiêu đề phần&lt;/h2&gt;
+    &lt;h3&gt;Tiêu đề con&lt;/h3&gt;
+  &lt;h2&gt;Tiêu đề phần khác&lt;/h2&gt;
+    &lt;h3&gt;Tiêu đề con&lt;/h3&gt;</div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Các Thẻ Bố cục HTML5 - DevMaster.edu.vn</p>
+        <p>Nền tảng học lập trình web chuyên nghiệp</p>
+    </footer>
+</body>
+</html>

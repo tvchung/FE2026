@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu các thẻ cơ bản trong HTML5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #ecf0f1;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            background-color: #2c3e50;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #667eea;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .tag-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .tag-item h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .tag-item code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tag-item p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .example {
+            background-color: #ecf0f1;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        article {
+            margin-bottom: 15px;
+        }
+        
+        article h4 {
+            color: #764ba2;
+            margin-bottom: 8px;
+        }
+        
+        .tag-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tag-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+            transition: 0.3s;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tag-card strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 Giới thiệu các thẻ cơ bản trong HTML5</h1>
+        <p>Khám phá những thẻ HTML5 phổ biến và cách sử dụng chúng</p>
+    </header>
+    
+    <nav>
+        <a href="#semantic">Thẻ Semantic</a>
+        <a href="#text">Thẻ Text</a>
+        <a href="#list">Thẻ List</a>
+        <a href="#media">Thẻ Media</a>
+        <a href="#form">Thẻ Form</a>
+    </nav>
+    
+    <div class="container">
+        <!-- PHẦN 1: THẺ SEMANTIC -->
+        <section id="semantic">
+            <h2>📦 Thẻ Semantic (Semantic Tags)</h2>
+            <p>Các thẻ semantic giúp tăng tính ngữ nghĩa của trang web, hỗ trợ SEO và khả năng truy cập.</p>
+            
+            <div class="tag-list">
+                <div class="tag-card">
+                    <strong>&lt;header&gt;</strong>
+                    <p>Phần đầu trang, thường chứa logo, tiêu đề, và menu chính</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;nav&gt;</strong>
+                    <p>Chứa các liên kết điều hướng chính của trang</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;main&gt;</strong>
+                    <p>Nội dung chính của trang, chỉ có một thẻ main duy nhất</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;section&gt;</strong>
+                    <p>Nhóm nội dung liên quan thành các phần riêng biệt</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;article&gt;</strong>
+                    <p>Nội dung độc lập như bài viết, comment, tin tức</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;aside&gt;</strong>
+                    <p>Nội dung phụ, thanh bên (sidebar)</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;footer&gt;</strong>
+                    <p>Phần chân trang, thường chứa thông tin bản quyền, liên kết</p>
+                </div>
+                
+                <div class="tag-card">
+                    <strong>&lt;figure&gt;</strong>
+                    <p>Hình ảnh, đồ thị, với chú thích</p>
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3>Ví dụ cấu trúc trang HTML5</h3>
+                <div class="example">
+&lt;header&gt;...&lt;/header&gt;<br>
+&lt;nav&gt;...&lt;/nav&gt;<br>
+&lt;main&gt;<br>
+&nbsp;&nbsp;&lt;section&gt;...&lt;/section&gt;<br>
+&nbsp;&nbsp;&lt;article&gt;...&lt;/article&gt;<br>
+&nbsp;&nbsp;&lt;aside&gt;...&lt;/aside&gt;<br>
+&lt;/main&gt;<br>
+&lt;footer&gt;...&lt;/footer&gt;
+                </div>
+            </div>
+        </section>
+        
+        <!-- PHẦN 2: THẺ TEXT -->
+        <section id="text">
+            <h2>📝 Thẻ Text (Text Tags)</h2>
+            <p>Các thẻ định dạng văn bản cơ bản:</p>
+            
+            <div class="tag-item">
+                <h3><code>&lt;h1&gt;</code> đến <code>&lt;h6&gt;</code> - Tiêu đề (Headings)</h3>
+                <p>Định nghĩa các tiêu đề, h1 là lớn nhất, h6 là nhỏ nhất. Mỗi trang chỉ nên có một h1.</p>
+                <div class="example">
+&lt;h1&gt;Tiêu đề cấp 1&lt;/h1&gt;<br>
+&lt;h2&gt;Tiêu đề cấp 2&lt;/h2&gt;<br>
+&lt;h3&gt;Tiêu đề cấp 3&lt;/h3&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;p&gt;</code> - Đoạn (Paragraph)</h3>
+                <p>Định nghĩa một đoạn văn bản.</p>
+                <div class="example">
+&lt;p&gt;Đây là một đoạn văn bản trong HTML5&lt;/p&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;strong&gt;</code> - Văn bản quan trọng (Bold)</h3>
+                <p>Tạo văn bản đậm với ý nghĩa ngữ nghĩa quan trọng.</p>
+                <div class="example">
+&lt;p&gt;Đây là &lt;strong&gt;văn bản quan trọng&lt;/strong&gt;&lt;/p&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;em&gt;</code> - Văn bản nhấn mạnh (Italic)</h3>
+                <p>Tạo văn bản nghiêng với ý nghĩa nhấn mạnh.</p>
+                <div class="example">
+&lt;p&gt;Đây là &lt;em&gt;văn bản nhấn mạnh&lt;/em&gt;&lt;/p&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;span&gt;</code> - Nhóm inline</h3>
+                <p>Nhóm nội dung inline mà không có ý nghĩa ngữ nghĩa.</p>
+                <div class="example">
+&lt;p&gt;Màu sắc yêu thích của tôi là &lt;span style="color: blue;"&gt;xanh&lt;/span&gt;&lt;/p&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;br&gt;</code> - Xuống dòng (Line Break)</h3>
+                <p>Tạo một dòng mới. Đây là thẻ tự đóng.</p>
+                <div class="example">
+&lt;p&gt;Dòng 1&lt;br&gt;Dòng 2&lt;/p&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;hr&gt;</code> - Đường kẻ ngang (Horizontal Rule)</h3>
+                <p>Tạo một đường kẻ ngang để tách biệt nội dung.</p>
+                <div class="example">
+&lt;p&gt;Phần 1&lt;/p&gt;<br>
+&lt;hr&gt;<br>
+&lt;p&gt;Phần 2&lt;/p&gt;
+                </div>
+            </div>
+        </section>
+        
+        <!-- PHẦN 3: THẺ DANH SÁCH -->
+        <section id="list">
+            <h2>📋 Thẻ Danh sách (List Tags)</h2>
+            
+            <div class="tag-item">
+                <h3><code>&lt;ul&gt;</code> - Danh sách không thứ tự (Unordered List)</h3>
+                <p>Tạo danh sách không có thứ tự với ký hiệu bullet.</p>
+                <div class="example">
+&lt;ul&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Mục 1&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Mục 2&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Mục 3&lt;/li&gt;<br>
+&lt;/ul&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;ol&gt;</code> - Danh sách có thứ tự (Ordered List)</h3>
+                <p>Tạo danh sách có thứ tự bằng số hoặc ký tự.</p>
+                <div class="example">
+&lt;ol&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Bước 1&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Bước 2&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Bước 3&lt;/li&gt;<br>
+&lt;/ol&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;li&gt;</code> - Mục danh sách (List Item)</h3>
+                <p>Định nghĩa từng mục trong danh sách.</p>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</code> - Danh sách định nghĩa (Definition List)</h3>
+                <p>Tạo danh sách với định nghĩa hoặc mô tả.</p>
+                <div class="example">
+&lt;dl&gt;<br>
+&nbsp;&nbsp;&lt;dt&gt;HTML5&lt;/dt&gt;<br>
+&nbsp;&nbsp;&lt;dd&gt;Phiên bản mới nhất của HTML&lt;/dd&gt;<br>
+&nbsp;&nbsp;&lt;dt&gt;CSS3&lt;/dt&gt;<br>
+&nbsp;&nbsp;&lt;dd&gt;Phiên bản mới nhất của CSS&lt;/dd&gt;<br>
+&lt;/dl&gt;
+                </div>
+            </div>
+        </section>
+        
+        <!-- PHẦN 4: THẺ MEDIA -->
+        <section id="media">
+            <h2>🎬 Thẻ Media (Media Tags)</h2>
+            
+            <div class="tag-item">
+                <h3><code>&lt;img&gt;</code> - Hình ảnh (Image)</h3>
+                <p>Chèn hình ảnh vào trang. Đây là thẻ tự đóng.</p>
+                <div class="example">
+&lt;img src="hinhanh.jpg" alt="Mô tả hình ảnh"&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;audio&gt;</code> - Âm thanh (Audio)</h3>
+                <p>Nhúng file âm thanh vào trang.</p>
+                <div class="example">
+&lt;audio controls&gt;<br>
+&nbsp;&nbsp;&lt;source src="nhac.mp3" type="audio/mpeg"&gt;<br>
+&lt;/audio&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;video&gt;</code> - Video (Video)</h3>
+                <p>Nhúng file video vào trang.</p>
+                <div class="example">
+&lt;video width="320" height="240" controls&gt;<br>
+&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>
+&lt;/video&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;figure&gt;</code> và <code>&lt;figcaption&gt;</code></h3>
+                <p>Tạo hình ảnh với chú thích.</p>
+                <div class="example">
+&lt;figure&gt;<br>
+&nbsp;&nbsp;&lt;img src="hinhanh.jpg" alt="..."&gt;<br>
+&nbsp;&nbsp;&lt;figcaption&gt;Chú thích cho hình ảnh&lt;/figcaption&gt;<br>
+&lt;/figure&gt;
+                </div>
+            </div>
+        </section>
+        
+        <!-- PHẦN 5: THẺ FORM -->
+        <section id="form">
+            <h2>📝 Thẻ Biểu mẫu (Form Tags)</h2>
+            
+            <div class="tag-item">
+                <h3><code>&lt;form&gt;</code> - Biểu mẫu (Form)</h3>
+                <p>Tạo một biểu mẫu để thu thập dữ liệu từ người dùng.</p>
+                <div class="example">
+&lt;form action="submit.php" method="POST"&gt;<br>
+&nbsp;&nbsp;&lt;!-- các input elements --&gt;<br>
+&lt;/form&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;input&gt;</code> - Trường nhập liệu (Input Field)</h3>
+                <p>Tạo các trường nhập liệu với nhiều loại khác nhau.</p>
+                <div class="example">
+&lt;input type="text" placeholder="Nhập tên"&gt;<br>
+&lt;input type="email" placeholder="Nhập email"&gt;<br>
+&lt;input type="password" placeholder="Nhập mật khẩu"&gt;<br>
+&lt;input type="number" placeholder="Nhập số"&gt;<br>
+&lt;input type="date"&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;label&gt;</code> - Nhãn (Label)</h3>
+                <p>Tạo nhãn cho các input fields.</p>
+                <div class="example">
+&lt;label for="name"&gt;Tên:&lt;/label&gt;<br>
+&lt;input type="text" id="name"&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;textarea&gt;</code> - Vùng nhập văn bản (Text Area)</h3>
+                <p>Tạo vùng nhập liệu cho văn bản dài.</p>
+                <div class="example">
+&lt;textarea rows="4" cols="50"&gt;&lt;/textarea&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;select&gt;</code> - Dropdown</h3>
+                <p>Tạo menu thả xuống để chọn một tùy chọn.</p>
+                <div class="example">
+&lt;select&gt;<br>
+&nbsp;&nbsp;&lt;option&gt;Chọn 1&lt;/option&gt;<br>
+&nbsp;&nbsp;&lt;option&gt;Chọn 2&lt;/option&gt;<br>
+&lt;/select&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;button&gt;</code> - Nút (Button)</h3>
+                <p>Tạo nút bấm để gửi biểu mẫu hoặc thực hiện hành động.</p>
+                <div class="example">
+&lt;button type="submit"&gt;Gửi&lt;/button&gt;<br>
+&lt;button type="reset"&gt;Làm mới&lt;/button&gt;<br>
+&lt;button type="button"&gt;Nút bấm&lt;/button&gt;
+                </div>
+            </div>
+        </section>
+        
+        <!-- PHẦN BỔ SUNG -->
+        <section>
+            <h2>🔗 Thẻ Khác</h2>
+            
+            <div class="tag-item">
+                <h3><code>&lt;a&gt;</code> - Liên kết (Anchor/Link)</h3>
+                <p>Tạo liên kết đến trang web khác hoặc phần khác trong trang.</p>
+                <div class="example">
+&lt;a href="https://example.com"&gt;Vào trang web&lt;/a&gt;<br>
+&lt;a href="#section1"&gt;Đến phần 1&lt;/a&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;div&gt;</code> - Khối (Division)</h3>
+                <p>Tạo một khối container để nhóm các phần tử.</p>
+                <div class="example">
+&lt;div class="box"&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Nội dung bên trong div&lt;/p&gt;<br>
+&lt;/div&gt;
+                </div>
+            </div>
+            
+            <div class="tag-item">
+                <h3><code>&lt;table&gt;</code> - Bảng (Table)</h3>
+                <p>Tạo bảng để hiển thị dữ liệu dạng hàng và cột.</p>
+                <div class="example">
+&lt;table&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Tên cột 1&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Tên cột 2&lt;/th&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dữ liệu 1&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dữ liệu 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&lt;/table&gt;
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Hướng dẫn HTML5 - DevMaster.edu.vn</p>
+        <p>Tạo bởi: Lập trình viên web</p>
+    </footer>
+</body>
+</html>

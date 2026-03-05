@@ -1,25 +1,45 @@
 @charset "UTF-8";
 :root {
   --primary: #0d6efd; /* “đổ” biến SCSS vào CSS var */
+  --secondary: yellow;
 }
+
 .button {
   background: #0d6efd;
   border-radius: 12px;
 }
+
 .card {
   padding: 16px;
+  background: #0d6efd;
+  border-radius: 12px;
 }
-.card .title {
+.card__title {
   font-weight: 700;
+  color: yellow;
 }
-.card:hover {
+.card__btn:hover {
   transform: translateY(-4px);
+  cursor: pointer;
 }
+.card__btn {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--secondary);
+}
+.card__price {
+  color: red;
+}
+.card--featured {
+  border: 3px solid red;
+}
+
 .btn {
   padding: 16px;
   border-radius: 12px;
   background: var(--primary);
 }
+
 .btn--primary {
   background: blue;
 }

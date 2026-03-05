@@ -1,23 +1,39 @@
 $primary: #0d6efd;
+$secondary: yellow;
 $spacing: 16px;
 $radius: 12px;
 :root {
   --primary: #{$primary}; /* “đổ” biến SCSS vào CSS var */
+  --secondary: #{$secondary};
 }
 .button {
   background: $primary;
   border-radius: $radius;
 }
 .card {
-  padding: 16px;
+    padding: 16px;
+    background: $primary;
+    border-radius: $radius;
+    &__title {
+        font-weight: 700;
+        color: $secondary;
+    }
 
-  .title {
-    font-weight: 700;
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-  }
+    &__btn:hover {
+        transform: translateY(-4px);
+        cursor: pointer;
+    }
+    &__btn {
+        padding: $spacing;
+        border-radius: $radius;
+        background: var(--secondary);
+    }
+    &__price{
+        color: red;
+    }
+    &--featured {
+        border: 3px solid red;
+    }
 }
 .btn {
   padding: $spacing;

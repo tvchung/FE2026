@@ -1,0 +1,273 @@
+/* =========================
+   RESET + VARIABLES
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green-main: #05a742;
+    --green-dark: #038a36;
+    --yellow-main: #fff600;
+
+    --panel-border: #777;
+    --item-border: #038a36;
+    --text-white: #fff;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================
+   MENU LEVEL 1 (BASE/DESKTOP)
+========================= */
+.menu {
+    background: var(--green-main);
+}
+
+.menu-lv1 {
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+}
+
+.menu-lv1>li {
+    position: relative;
+    border-right: 1px solid rgba(255, 255, 255, .3);
+}
+
+.lv1-link {
+    display: block;
+    padding: 14px 28px;
+    font-size: 18px;
+    color: var(--text-white);
+    background: var(--green-main);
+    transition: .25s ease;
+}
+
+.lv1-link:hover {
+    background: var(--green-dark);
+    color: var(--yellow-main);
+}
+
+.lv1-link.active {
+    background: var(--green-dark);
+    color: var(--yellow-main);
+    font-weight: 700;
+}
+
+/* =========================
+   DROPDOWN (LV2 container) - DESKTOP
+========================= */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid var(--panel-border);
+}
+
+.has-dropdown:hover .dropdown {
+    display: block;
+}
+
+/* =========================
+   COMMON PANELS
+========================= */
+.lv2,
+.lv3,
+.lv4 {
+    list-style: none;
+    min-width: 220px;
+}
+
+/* LV2 is the first visible column */
+.lv2 {
+    position: relative;
+    background: #fff;
+}
+
+/* =========================
+   ITEM STYLE (LV2/LV3/LV4)
+========================= */
+.item-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 56px;
+    padding: 0 12px;
+
+    background: var(--green-main);
+    border: 1px solid var(--item-border);
+    color: var(--text-white);
+
+    white-space: nowrap;
+    transition: .25s ease;
+}
+
+.item-link:hover {
+    background: var(--green-dark);
+    color: var(--yellow-main);
+}
+
+.item-link.hot {
+    background: red;
+    color: #fff;
+    font-weight: 700;
+    border-color: #b30000;
+}
+
+/* =========================
+   LEVEL 3 - DESKTOP (flyout)
+========================= */
+.lv3 {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: none;
+
+    background: #fff;
+    border-left: 1px solid var(--panel-border);
+    z-index: 20;
+}
+
+.lv2-item {
+    position: relative;
+}
+
+.lv2-item:hover>.lv3 {
+    display: block;
+}
+
+/* =========================
+   LEVEL 4 - DESKTOP (flyout)
+========================= */
+.lv4 {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: none;
+
+    background: #fff;
+    border-left: 1px solid var(--panel-border);
+    z-index: 30;
+}
+
+.lv3-item {
+    position: relative;
+}
+
+.lv3-item:hover>.lv4 {
+    display: block;
+}
+
+/* =========================
+   OPEN SUBMENU TO LEFT (DESKTOP manual)
+   - add .drop-left to lv2-item or lv3-item if near right edge
+========================= */
+.lv2-item.drop-left>.lv3,
+.lv3-item.drop-left>.lv4 {
+    left: auto;
+    right: 100%;
+    border-left: none;
+    border-right: 1px solid var(--panel-border);
+}
+
+/* =========================
+   MOBILE: HOVER -> SỔ XUỐNG (NO JS)
+   - switch to vertical menu
+   - dropdown/submenus become static, expand downward on hover
+========================= */
+@media (max-width: 768px) {
+
+    /* LV1 dọc */
+    .menu-lv1 {
+        flex-direction: column;
+    }
+
+    .menu-lv1>li {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .25);
+    }
+
+    /* Dropdown không còn absolute */
+    .dropdown {
+        position: static;
+        display: none;
+        border: none;
+        background: transparent;
+    }
+
+    /* Hover cấp 1 -> sổ LV2 */
+    .has-dropdown:hover .dropdown {
+        display: block;
+    }
+
+    /* Panels static + mặc định đóng */
+    .lv2,
+    .lv3,
+    .lv4 {
+        position: static;
+        min-width: unset;
+        display: none;
+        border: none;
+        background: transparent;
+    }
+
+    /* Khi mở dropdown thì lv2 hiện */
+    .has-dropdown:hover .lv2 {
+        display: block;
+    }
+
+    /* Hover cấp 2 -> sổ LV3 */
+    .lv2-item:hover>.lv3 {
+        display: block;
+    }
+
+    /* Hover cấp 3 -> sổ LV4 */
+    .lv3-item:hover>.lv4 {
+        display: block;
+    }
+
+    /* Canh trái + thụt vào theo cấp */
+    .lv1-link {
+        padding: 14px 16px;
+    }
+
+    .item-link {
+        justify-content: flex-start;
+        height: auto;
+        padding: 12px 16px;
+    }
+
+    .lv2 .item-link {
+        padding-left: 32px;
+    }
+
+    .lv3 .item-link {
+        padding-left: 52px;
+    }
+
+    .lv4 .item-link {
+        padding-left: 72px;
+    }
+
+    /* Trên mobile không dùng flyout trái/phải nữa */
+    .lv2-item.drop-left>.lv3,
+    .lv3-item.drop-left>.lv4 {
+        right: auto;
+        left: auto;
+        border-right: none;
+    }
+}

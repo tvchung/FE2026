@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cách 2: @font-face (Font local)</title>
+    <style>
+        @font-face {
+            font-family: "Roboto ExtraBold";
+            src: url('./fonts/Roboto-ExtraBold.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: "Roboto Regular"   ;
+            src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+        }
+        body {
+            font-family: "Roboto Regular", sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            font-family: "Roboto ExtraBold", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cách 2: @font-face (Font local)</h1>
+    <hr>
+    <p>
+        Ngoài việc sử dụng font từ các dịch vụ trực tuyến như Google Fonts, bạn cũng có thể tích hợp font local bằng cách sử dụng quy tắc @font-face trong CSS. Điều này cho phép bạn sử dụng các font mà bạn đã tải xuống và lưu trữ trên máy chủ của mình.
+    </p>
+    <pre>
+    @font-face {
+        font-family: 'MyCustomFont';
+        src: url('fonts/MyCustomFont-Regular.woff2') format('woff2'),
+            url('fonts/MyCustomFont-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </pre>
+</body>
+</html>

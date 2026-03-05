@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👉 Animation tạo chuyển động nhiều bước bằng <code>@keyframes</code>.</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: relative;
+            animation-name: slideLeft;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>👉 Animation tạo chuyển động nhiều bước bằng <code>@keyframes</code>.</h1>
+    <pre>
+        @keyframes slideLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </pre>
+    <div></div>
+</body>
+</html>

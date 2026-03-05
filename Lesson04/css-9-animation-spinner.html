@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👉 Animation tạo chuyển động nhiều bước bằng <code>@keyframes</code>.</title>
+    <style>
+        .loader{
+            width: 75px;
+            height: 75px;
+            border: 15px solid #ccc;
+            border-top: 15px solid green;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin{
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>👉 Animation tạo chuyển động nhiều bước bằng <code>@keyframes</code>.</h1>
+    <pre>
+        @keyframes spin{
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </pre>
+    <div class="loader"></div>
+</body>
+</html>

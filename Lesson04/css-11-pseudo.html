@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-class & Pseudo-element Nâng Cao</title>
+    <style>
+        .link{
+            position: relative;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .link::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 0;
+            height: 5px;
+            background: green;
+            transition: width 0.3s;
+        }
+
+        .link:hover::after{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="link">Pseudo-class & Pseudo-element Nâng Cao</h1>
+    <p>Ví dụ: Tạo underline animation bằng ::after</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile-first (Cách làm chuẩn hiện đại)</title>
+    <style>
+        /* Mobile mặc định */
+        .products{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .card {
+            background: #06b35a;
+            padding: 1rem;
+            border-radius: .5rem;
+            text-align: center;
+            color: white;
+        }
+        /* Tablet */
+        @media (min-width: 768px){
+            .products{
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 992px){
+            .products{
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1> <b>Mobile-first là gì?:</b> </h1>
+        <p> Viết CSS cho mobile trước, sau đó mở rộng lên tablet/desktop bằng min-width.</p>
+        <pre>
+            ✅ Ưu điểm:
+
+            Code gọn hơn
+
+            Dễ tối ưu performance
+
+            Phù hợp thói quen người dùng mobile nhiều
+        </pre>
+    </section>
+    <section class="products">
+        <div class="card">SP 1</div>
+        <div class="card">SP 2</div>
+        <div class="card">SP 3</div>
+        <div class="card">SP 4</div>
+        <div class="card">SP 5</div>
+        <div class="card">SP 6</div>
+    </section>
+</body>
+</html>

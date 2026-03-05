@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVBAR CĂN GIỮA</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            /* logo trái - menu giữa - button phải */
+            align-items: center;
+            /* căn giữa theo chiều dọc */
+            padding: 0 40px;
+            height: 70px;
+            background: #111;
+            color: white;
+        }
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .menu a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #05a742;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            background: #05a742;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+
+        <ul class="menu">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+
+        <div class="action">
+            <button>Đăng nhập</button>
+        </div>
+    </nav>
+</body>
+
+</html>

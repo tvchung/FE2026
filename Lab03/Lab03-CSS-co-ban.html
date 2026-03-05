@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab03 - CSS Cơ Bản (All-in-one)</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#eaf0ff;
+      --muted:#aab6e8;
+      --line:rgba(255,255,255,.12);
+      --accent:#ffd54a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(1200px 800px at 20% 0%, #1a2552, #0b1020);
+      color:var(--text);
+    }
+    a{color:#9ad1ff}
+    .topbar{
+      position: sticky; top:0; z-index:10;
+      background: rgba(10,14,28,.85);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:16px}
+    .title{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .title h1{margin:0;font-size:20px}
+    .title .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border:1px solid var(--line); border-radius:999px;
+      color:var(--muted);
+    }
+    .toc{
+      margin-top:12px;
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .toc a{
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius:10px;
+      font-size:13px;
+      opacity:.9;
+    }
+    .toc a:hover{border-color:rgba(255,255,255,.35)}
+    .section{
+      margin:18px 0;
+      border:1px solid var(--line);
+      background: rgba(18,26,51,.65);
+      border-radius:16px;
+      overflow:hidden;
+    }
+    .section .head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .section .head h2{margin:0;font-size:16px}
+    .section .head p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+    .section .body{padding:16px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 980px){
+      .grid.two{grid-template-columns: 1.15fr .85fr;}
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: rgba(9,12,24,.55);
+      overflow:hidden;
+    }
+    .panel .panel-h{
+      padding:10px 12px;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .panel .panel-b{padding:12px}
+    code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;}
+    pre{
+      margin:0;
+      padding:12px;
+      border-radius:12px;
+      overflow:auto;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.10);
+      color:#eaf0ff;
+      font-size:12.5px;
+      line-height:1.5;
+    }
+    .iframe-wrap{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    iframe{
+      width:100%;
+      border:0;
+      display:block;
+      height: 360px;
+      background:#fff;
+    }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:10px;
+      line-height:1.5;
+    }
+    .pill{
+      display:inline-block;
+      padding:2px 8px;
+      border-radius:999px;
+      background: rgba(255,213,74,.14);
+      border:1px solid rgba(255,213,74,.35);
+      color:#ffe28a;
+      font-size:12px;
+      vertical-align:middle;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="title">
+        <h1>Lab 03 — CSS cơ bản (All-in-one)</h1>
+        <div class="badge">✅ 1 file HTML • gồm Phần I + Phần II</div>
+      </div>
+      <div class="toc">
+        <a href="#phan1">Phần I</a>
+        <a href="#bth1">1.1 Selector</a>
+        <a href="#bth2">1.2 Màu sắc</a>
+        <a href="#bth3">1.3 Đơn vị</a>
+        <a href="#bth4">1.4 Position r/a</a>
+        <a href="#bth5">1.5 Fixed/Sticky</a>
+        <a href="#bth6">1.6 Box Model</a>
+        <a href="#bth7">1.7 Display</a>
+        <a href="#bth8">1.8 Flexbox</a>
+        <a href="#phan2">Phần II</a>
+        <a href="#ex1">Ex1</a><a href="#ex2">Ex2</a><a href="#ex3">Ex3</a><a href="#ex4">Ex4</a>
+        <a href="#ex5">Ex5</a><a href="#ex6">Ex6</a><a href="#ex7">Ex7</a><a href="#ex8">Ex8</a><a href="#ex9">Ex9</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- PHẦN I -->
+    <div id="phan1" class="section">
+      <div class="head">
+        <div>
+          <h2>Phần I — Hướng dẫn thực hành từng bước</h2>
+          <p>Gồm 8 bài thực hành: Selector, Màu sắc, Đơn vị, Position, Fixed/Sticky, Box Model, Display, Flexbox.</p>
+        </div>
+        <span class="pill">Phần I</span>
+      </div>
+      <div class="body note">
+        Mỗi bài bên dưới gồm: <b>Preview</b> (kết quả) + <b>Code gợi ý</b> (HTML/CSS).
+      </div>
+    </div>
+
+    <!-- 1.1 -->
+    <div id="bth1" class="section">
+      <div class="head">
+        <div>
+          <h2>1.1 — Bài thực hành 1: CSS Selector</h2>
+          <p>Thực hành bộ chọn theo thẻ, class, id, hậu duệ, nhóm…</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview (đã áp CSS)</div>
+          <div class="panel-b">
+            <style>
+              /* scope cho bth1 */
+              .bth1 h1, .bth1 h2{color: purple; margin: 6px 0;}
+              .bth1 p{color: blue; font-size: 16px; margin: 6px 0;}
+              .bth1 .highlight{background: yellow; font-weight: bold;}
+              .bth1 #special{color:red; font-size: 18px;}
+              .bth1 .box{border:1px solid #cfd8ff; padding:10px; border-radius:10px; margin:10px 0;}
+              .bth1 .box p{color:green;}
+              .bth1 ul li{color: orange;}
+            </style>
+
+            <div class="bth1">
+              <h1>Học CSS cơ bản</h1>
+              <p>Đây là đoạn văn bình thường.</p>
+              <p class="highlight">Đây là đoạn văn có class highlight.</p>
+              <p id="special">Đây là đoạn văn có id special.</p>
+              <div class="box">
+                <p>Đoạn văn bên trong div.box</p>
+              </div>
+              <h2>Danh sách môn học</h2>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý (HTML + CSS)</div>
+          <div class="panel-b">
+<pre><code>&lt;h1&gt;Học CSS cơ bản&lt;/h1&gt;
+&lt;p&gt;Đây là đoạn văn bình thường.&lt;/p&gt;
+&lt;p class="highlight"&gt;Đây là đoạn văn có class highlight.&lt;/p&gt;
+&lt;p id="special"&gt;Đây là đoạn văn có id special.&lt;/p&gt;
+&lt;div class="box"&gt;
+  &lt;p&gt;Đoạn văn bên trong div.box&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2&gt;Danh sách môn học&lt;/h2&gt;
+&lt;ul&gt;...&lt;/ul&gt;
+
+/* 1. Bộ chọn theo thẻ */
+p { color: blue; font-size: 16px; }
+/* 2. Bộ chọn theo class */
+.highlight { background-color: yellow; font-weight: bold; }
+/* 3. Bộ chọn theo id */
+#special { color: red; font-size: 18px; }
+/* 4. Bộ chọn hậu duệ */
+.box p { color: green; }
+/* 5. Bộ chọn nhóm */
+h1, h2 { color: purple; }
+/* 6. Trang trí thêm */
+ul li { color: orange; }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1.2 -->
+    <div id="bth2" class="section">
+      <div class="head">
+        <div>
+          <h2>1.2 — Bài thực hành 2: Màu sắc trong CSS</h2>
+          <p>Màu theo tên, HEX, RGB; nền + viền (rgba).</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth2{color:#111;background:#fff;border-radius:12px;padding:12px}
+              .bth2 h1{margin:0 0 10px;font-size:18px}
+              .bth2 .color-name{color:red}
+              .bth2 .color-hex{color:#0066cc}
+              .bth2 .color-rgb{color:rgb(0,128,0)}
+              .bth2 .box{
+                background-color: rgba(255,165,0,0.5);
+                border:2px solid #ff6600;
+                padding:15px;width:250px;
+              }
+            </style>
+            <div class="bth2">
+              <h1>Thực hành màu sắc trong CSS</h1>
+              <p class="color-name">Màu theo tên</p>
+              <p class="color-hex">Màu theo mã HEX</p>
+              <p class="color-rgb">Màu theo RGB</p>
+              <div class="box">Hộp có nền màu và viền</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>&lt;p class="color-name"&gt;Màu theo tên&lt;/p&gt;
+&lt;p class="color-hex"&gt;Màu theo mã HEX&lt;/p&gt;
+&lt;p class="color-rgb"&gt;Màu theo RGB&lt;/p&gt;
+&lt;div class="box"&gt;Hộp có nền màu và viền&lt;/div&gt;
+
+.color-name { color: red; }
+.color-hex  { color: #0066cc; }
+.color-rgb  { color: rgb(0, 128, 0); }
+.box{
+  background-color: rgba(255, 165, 0, 0.5);
+  border: 2px solid #ff6600;
+  padding: 15px;
+  width: 250px;
+}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1.3 -->
+    <div id="bth3" class="section">
+      <div class="head">
+        <div>
+          <h2>1.3 — Bài thực hành 3: Kích thước & đơn vị</h2>
+          <p>px, %, em, rem, vw.</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth3{background:#fff;color:#111;border-radius:12px;padding:12px}
+              .bth3 h1{margin:0 0 10px;font-size:18px}
+              .bth3 .box-px{width:200px;height:80px;background:lightblue;margin-bottom:15px}
+              .bth3 .box-percent{width:50%;height:80px;background:lightgreen;margin-bottom:15px}
+              .bth3 .box-em{font-size:20px;width:15em;background:orange;padding:1em;margin-bottom:15px}
+              .bth3 .box-rem{font-size:1.5rem;background:pink;padding:1rem;margin-bottom:15px}
+              .bth3 .box-vw{width:50vw;height:60px;background:violet}
+            </style>
+            <div class="bth3">
+              <h1>Thực hành đơn vị CSS</h1>
+              <div class="box-px">Box dùng px</div>
+              <div class="box-percent">Box dùng %</div>
+              <div class="box-em">Box dùng em <p>Đoạn văn bên trong</p></div>
+              <div class="box-rem">Box dùng rem</div>
+              <div class="box-vw">Box dùng vw</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>.box-px{ width:200px; height:80px; background:lightblue; margin-bottom:15px; }
+.box-percent{ width:50%; height:80px; background:lightgreen; margin-bottom:15px; }
+.box-em{ font-size:20px; width:15em; background:orange; padding:1em; margin-bottom:15px; }
+.box-rem{ font-size:1.5rem; background:pink; padding:1rem; margin-bottom:15px; }
+.box-vw{ width:50vw; height:60px; background:violet; }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1.4 -->
+    <div id="bth4" class="section">
+      <div class="head">
+        <div>
+          <h2>1.4 — Bài thực hành 4: Position (relative/absolute)</h2>
+          <p>Container làm mốc, Box2 relative, Box3 absolute.</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+
+      <div class="body grid two">
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth4{background:#fff;color:#111;border-radius:12px;padding:12px}
+              .bth4 h1{margin:0 0 10px;font-size:18px}
+              .bth4 .container{
+                width: 500px; max-width:100%;
+                height: 300px; border:2px solid #111;
+                position: relative;
+                margin: 10px auto;
+              }
+              .bth4 .box{
+                width:100px;height:100px;color:#fff;
+                text-align:center;line-height:100px;
+              }
+              .bth4 .box1{background:blue;}
+              .bth4 .box2{background:green; position:relative; top:20px; left:20px;}
+              .bth4 .box3{background:red; position:absolute; top:50px; right:20px;}
+            </style>
+
+            <div class="bth4">
+              <h1>Thực hành position trong CSS</h1>
+              <div class="container">
+                <div class="box box1">Box 1</div>
+                <div class="box box2">Box 2</div>
+                <div class="box box3">Box 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>.container{
+  width:500px; height:300px;
+  border:2px solid black;
+  position:relative; /* Quan trọng */
+}
+.box{ width:100px; height:100px; line-height:100px; color:white; text-align:center; }
+.box1{ background:blue; }
+.box2{ background:green; position:relative; top:20px; left:20px; }
+.box3{ background:red; position:absolute; top:50px; right:20px; }</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.5 (iframe để không phá trang) -->
+    <div id="bth5" class="section">
+      <div class="head">
+        <div>
+          <h2>1.5 — Bài thực hành 5: Position (fixed/sticky)</h2>
+          <p>Menu fixed, tiêu đề sticky, nút back-to-top fixed.</p>
+        </div>
+        <span class="pill">Iframe sandbox</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="BTH5 - Fixed/Sticky" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{margin:0;font-family:Arial}
+  .navbar{
+    background:#333;color:#fff;text-align:center;padding:15px;
+    position:fixed;top:0;width:100%;
+  }
+  .content{margin-top:80px;padding:20px}
+  .sticky-title{background:orange;padding:10px;position:sticky;top:60px}
+  .back-top{
+    position:fixed;bottom:20px;right:20px;
+    background:red;color:white;padding:10px 15px;border-radius:50%;cursor:pointer;
+    user-select:none;
+  }
+</style></head><body>
+  <div class="navbar">MENU CỐ ĐỊNH (Fixed)</div>
+  <h2 class="sticky-title">Tiêu đề Sticky</h2>
+  <div class="content">
+    <p>Nội dung 1.</p><p>Nội dung 2.</p><p>Nội dung 3.</p><p>Nội dung 4.</p><p>Nội dung 5.</p>
+    <p>Nội dung 6.</p><p>Nội dung 7.</p><p>Nội dung 8.</p><p>Nội dung 9.</p><p>Nội dung 10.</p>
+    <p style="height:500px">Cuộn thêm để thấy sticky/back-to-top…</p>
+  </div>
+  <div class="back-top" onclick="window.scrollTo({top:0,behavior:`smooth`})">↑</div>
+</body></html>'></iframe>
+        </div>
+
+        <div class="note">
+          Gợi ý: phần này dùng <b>fixed</b> nên mình sandbox bằng iframe để không “dính” lên toàn trang Lab03.
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.6 -->
+    <div id="bth6" class="section">
+      <div class="head">
+        <div>
+          <h2>1.6 — Bài thực hành 6: CSS Box Model</h2>
+          <p>So sánh content-box và border-box.</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth6{background:#fff;color:#111;border-radius:12px;padding:12px}
+              .bth6 h1{margin:0 0 10px;font-size:18px}
+              .bth6 .box{
+                width:300px; max-width:100%;
+                padding:20px;border:5px solid black;margin:20px 0;background:lightblue;
+              }
+              .bth6 .box1{box-sizing:content-box;}
+              .bth6 .box2{box-sizing:border-box;background:lightgreen;}
+            </style>
+            <div class="bth6">
+              <h1>Thực hành CSS Box Model</h1>
+              <div class="box box1">Box 1 - Content Box</div>
+              <div class="box box2">Box 2 - Border Box</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>.box{
+  width:300px; padding:20px; border:5px solid black;
+  margin:20px; background:lightblue;
+}
+.box1{ box-sizing: content-box; }
+.box2{ box-sizing: border-box; background: lightgreen; }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1.7 -->
+    <div id="bth7" class="section">
+      <div class="head">
+        <div>
+          <h2>1.7 — Bài thực hành 7: Display</h2>
+          <p>block, inline, inline-block (menu ngang), none.</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth7{background:#fff;color:#111;border-radius:12px;padding:12px}
+              .bth7 h1{margin:0 0 10px;font-size:18px}
+              .bth7 .block-box{display:block;background:lightblue;margin-bottom:15px;padding:10px}
+              .bth7 .inline-box{display:inline;background:pink;padding:5px}
+              .bth7 .menu-item{
+                display:inline-block;width:120px;background:orange;padding:10px;text-align:center;margin:5px
+              }
+              .bth7 .hidden-box{display:none}
+            </style>
+            <div class="bth7">
+              <h1>Thực hành Display</h1>
+              <div class="block-box">Block</div>
+              <span class="inline-box">Inline 1</span>
+              <span class="inline-box">Inline 2</span>
+              <div style="margin-top:10px">
+                <div class="menu-item">Trang chủ</div>
+                <div class="menu-item">Sản phẩm</div>
+                <div class="menu-item">Liên hệ</div>
+              </div>
+              <div class="hidden-box">Tôi sẽ bị ẩn</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>.block-box{ display:block; background:lightblue; padding:10px; }
+.inline-box{ display:inline; background:pink; padding:5px; }
+.menu-item{ display:inline-block; width:120px; background:orange; padding:10px; text-align:center; }
+.hidden-box{ display:none; }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1.8 -->
+    <div id="bth8" class="section">
+      <div class="head">
+        <div>
+          <h2>1.8 — Bài thực hành 8: Flexbox cơ bản</h2>
+          <p>display:flex, justify-content, align-items, gap…</p>
+        </div>
+        <span class="pill">Preview + Code</span>
+      </div>
+      <div class="body grid two">
+
+        <div class="panel">
+          <div class="panel-h">Preview</div>
+          <div class="panel-b">
+            <style>
+              .bth8{background:#fff;color:#111;border-radius:12px;padding:12px}
+              .bth8 h1{margin:0 0 10px;font-size:18px}
+              .bth8 .container{
+                display:flex; justify-content:center; align-items:center;
+                gap:20px; height:300px; background:#f2f2f2; border-radius:12px;
+              }
+              .bth8 .item{
+                width:100px;height:100px;background:orange;color:white;
+                display:flex;justify-content:center;align-items:center;
+                border-radius:12px;
+              }
+            </style>
+            <div class="bth8">
+              <h1>Thực hành Flexbox</h1>
+              <div class="container">
+                <div class="item">Box 1</div>
+                <div class="item">Box 2</div>
+                <div class="item">Box 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-h">Code gợi ý</div>
+          <div class="panel-b">
+<pre><code>.container{
+  display:flex;
+  justify-content:center; /* căn ngang */
+  align-items:center;     /* căn dọc */
+  gap:20px;
+  height:300px;
+  background:#f2f2f2;
+}
+.item{
+  width:100px;height:100px;background:orange;color:white;
+  display:flex;justify-content:center;align-items:center;
+}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PHẦN II -->
+    <div id="phan2" class="section">
+      <div class="head">
+        <div>
+          <h2>Phần II — Phần tự thực hành (Bài tập 1 → 9)</h2>
+          <p>Tổng hợp toàn bộ 9 bài tập giao diện theo hình minh hoạ (3.1 → 3.9).</p>
+        </div>
+        <span class="pill">Phần II</span>
+      </div>
+      <div class="body note">
+        Mỗi bài tập có preview (iframe) để bạn xem đúng UI; phần code cũng nằm ngay trong `srcdoc` (bạn copy ra file riêng nếu muốn).
+      </div>
+    </div>
+
+    <!-- Ex1 -->
+    <div id="ex1" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 1 — 4 div 4 màu + hover</h2>
+          <p>Tạo 4 div với 4 màu khác nhau, có hiệu ứng hover.</p>
+        </div>
+        <span class="pill">Ex1</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex1" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{font-family:Arial;margin:0;background:#fff}
+  .wrap{width:220px;margin:40px auto}
+  .box{height:36px;border:2px solid #111;margin:12px 0;display:flex;align-items:center;padding-left:10px;font-weight:bold;transition:.18s}
+  .b1{background:red}.b2{background:green}.b3{background:blue;color:#fff}.b4{background:yellow}
+  .box:hover{transform:translateX(8px);box-shadow:0 10px 18px rgba(0,0,0,.18)}
+</style></head><body>
+  <div class="wrap">
+    <div class="box b1">div-1</div>
+    <div class="box b2">div-2</div>
+    <div class="box b3">div-3</div>
+    <div class="box b4">div-4</div>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex2 -->
+    <div id="ex2" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 2 — Box + badge “NEW” (absolute)</h2>
+          <p>Tạo 1 BOX, tạo badge NEW ở góc trên phải.</p>
+        </div>
+        <span class="pill">Ex2</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex2" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{font-family:Arial;margin:0;background:#fff}
+  .box{width:300px;height:320px;background:#a8ff2a;margin:40px auto;position:relative}
+  .badge{position:absolute;top:12px;right:12px;width:50px;height:50px;border-radius:50%;
+    background:red;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+</style></head><body>
+  <div class="box"><div class="badge">NEW</div></div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex3 -->
+    <div id="ex3" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 3 — Menu dropdown (absolute)</h2>
+          <p>Menu ngang: Trang chủ, Sản phẩm, Liên hệ; hover Sản phẩm hiện submenu.</p>
+        </div>
+        <span class="pill">Ex3</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex3" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{font-family:Arial;margin:0;background:#fff}
+  nav{width:420px;margin:40px auto}
+  ul{list-style:none;padding:0;margin:0}
+  .menu{display:flex;background:#333}
+  .menu>li{position:relative}
+  .menu>li>a{display:block;color:#fff;text-decoration:none;padding:14px 18px}
+  .menu>li>a:hover{background:#222}
+  .sub{position:absolute;top:100%;left:0;background:#fff;min-width:160px;display:none;border:1px solid #ddd}
+  .sub a{display:block;color:#111;text-decoration:none;padding:10px 12px}
+  .sub a:hover{background:#f2f2f2}
+  .has-sub:hover .sub{display:block}
+</style></head><body>
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Trang chủ</a></li>
+      <li class="has-sub">
+        <a href="#">Sản phẩm</a>
+        <div class="sub">
+          <a href="#">Laptop</a>
+          <a href="#">Điện thoại</a>
+          <a href="#">Phụ kiện</a>
+        </div>
+      </li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+  </nav>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex4 -->
+    <div id="ex4" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 4 — Ảnh có chữ đè lên (overlay text)</h2>
+          <p>Card ảnh bo góc, chữ overlay + nút “Xem thêm”.</p>
+        </div>
+        <span class="pill">Ex4</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex4" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{font-family:Arial;margin:0;background:#fff}
+  .card{width:480px;max-width:92vw;margin:40px auto;border-radius:14px;overflow:hidden;position:relative}
+  .card img{width:100%;display:block}
+  .overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#fff;text-align:center;padding:16px
+  }
+  .overlay h2{margin:0 0 10px;font-size:28px}
+  .overlay p{margin:0 0 16px;opacity:.9}
+  .overlay a{
+    text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.55);
+    padding:10px 18px;border-radius:10px;display:inline-block
+  }
+</style></head><body>
+  <div class="card">
+    <img alt="Du lịch Đà Nẵng" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60">
+    <div class="overlay">
+      <h2>Du lịch Đà Nẵng</h2>
+      <p>Biển xanh – nắng vàng – trải nghiệm tuyệt vời</p>
+      <a href="#">Xem thêm</a>
+    </div>
+  </div>
+</body></html>'></iframe>
+        </div>
+        <div class="note">Ảnh dùng link mẫu (Unsplash). Nếu bạn muốn đúng ảnh như PDF, gửi mình file ảnh để thay vào.</div>
+      </div>
+    </div>
+
+    <!-- Ex5 -->
+    <div id="ex5" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 5 — Thẻ sản phẩm + nhãn “SALE” (absolute)</h2>
+          <p>Ảnh + tên + giá, có SALE góc phải trên.</p>
+        </div>
+        <span class="pill">Ex5</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex5" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{font-family:Arial;margin:0;background:#fff}
+  .card{
+    width:320px;margin:40px auto;background:#fff;border-radius:14px;
+    border:1px solid #e6e6e6;box-shadow:0 12px 26px rgba(0,0,0,.08);
+    position:relative;overflow:hidden
+  }
+  .sale{
+    position:absolute;top:12px;right:12px;background:#e53935;color:#fff;
+    font-weight:800;font-size:12px;padding:6px 10px;border-radius:8px
+  }
+  .img{padding:18px 18px 8px}
+  .img img{width:100%;display:block}
+  .info{padding:0 18px 18px}
+  .name{margin:10px 0 6px;font-weight:800}
+  .price{margin:0;color:#e53935;font-weight:900;font-size:18px}
+</style></head><body>
+  <div class="card">
+    <div class="sale">SALE</div>
+    <div class="img">
+      <img alt="Áo thun" src="https://picsum.photos/400/300">
+    </div>
+    <div class="info">
+      <div class="name">Áo Thun Cổ Trụ</div>
+      <p class="price">250.000đ</p>
+    </div>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex6 -->
+    <div id="ex6" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 6 — Layout blog: header fixed + sidebar sticky + content scroll</h2>
+          <p>Giống hình: top bar đen cố định, sidebar dính, content cuộn.</p>
+        </div>
+        <span class="pill">Ex6</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex6" style="height:420px" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial;background:#fff}
+  header{
+    position:fixed;top:0;left:0;right:0;height:64px;
+    background:#111;color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:0 18px;z-index:10
+  }
+  header .brand{font-weight:900}
+  header nav a{color:#fff;text-decoration:none;margin-left:14px;opacity:.9}
+  .layout{margin-top:64px;display:grid;grid-template-columns: 240px 1fr;min-height: calc(100vh - 64px)}
+  aside{
+    border-right:1px solid #ddd;padding:16px;
+    position:sticky;top:64px;height: calc(100vh - 64px);
+    background:#fafafa
+  }
+  aside h3{margin:0 0 10px}
+  aside a{display:block;color:#111;text-decoration:none;padding:6px 0}
+  main{padding:18px;overflow:auto;height: calc(100vh - 64px)}
+  main h1{margin:0 0 10px;font-size:34px}
+  .line{height:1px;background:#e6e6e6;margin:14px 0}
+</style></head><body>
+  <header>
+    <div class="brand">MyBlog</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Posts</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h3>Danh mục</h3>
+      <a href="#">HTML/CSS</a>
+      <a href="#">JavaScript</a>
+      <a href="#">React</a>
+      <a href="#">Node.js</a>
+    </aside>
+
+    <main>
+      <h1>Tiêu đề bài viết</h1>
+      <p>Cuộn xuống để kiểm tra header fixed, sidebar sticky và content scroll.</p>
+      <div class="line"></div>
+      <p><b>Đoạn 1...</b></p><div class="line"></div>
+      <p><b>Đoạn 2...</b></p><div class="line"></div>
+      <p><b>Đoạn 3...</b></p><div class="line"></div>
+      <p style="height:900px">Nội dung dài để cuộn...</p>
+    </main>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex7 -->
+    <div id="ex7" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 7 — Menu ngang căn giữa + hover đổi màu</h2>
+          <p>Menu nền đen, item căn giữa; item active màu vàng.</p>
+        </div>
+        <span class="pill">Ex7</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex7" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{margin:0;font-family:Arial;background:#fff}
+  .bar{background:#111;padding:18px}
+  ul{list-style:none;margin:0;padding:0;display:flex;gap:26px;justify-content:center;align-items:center}
+  a{
+    color:#fff;text-decoration:none;display:block;padding:10px 18px;border-radius:10px;
+    transition:.18s;opacity:.95
+  }
+  a:hover{background:#222}
+  .active{background:#ffd400;color:#111;font-weight:800}
+</style></head><body>
+  <div class="bar">
+    <ul>
+      <li><a class="active" href="#">Trang chủ</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Khóa học</a></li>
+      <li><a href="#">Bài viết</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex8 -->
+    <div id="ex8" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 8 — Card sản phẩm (flex căn giữa)</h2>
+          <p>Ảnh + tên + giá + nút mua; card viền vàng bo góc.</p>
+        </div>
+        <span class="pill">Ex8</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex8" style="height:440px" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  body{margin:0;font-family:Arial;background:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh}
+  .card{
+    width:340px;border:2px solid #f2cf62;border-radius:16px;padding:18px;background:#fff;
+    display:flex;flex-direction:column;align-items:center;gap:12px
+  }
+  img{width:250px;max-width:100%;display:block;transform:rotate(-8deg)}
+  h2{margin:0;text-align:center;font-size:22px}
+  .price{color:#e53935;font-weight:900;font-size:22px;margin:0}
+  button{
+    background:#111;color:#fff;border:0;border-radius:10px;
+    padding:10px 18px;cursor:pointer
+  }
+  button:hover{filter:brightness(1.08)}
+</style></head><body>
+  <div class="card">
+    <img alt="Laptop" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=60">
+    <h2>Dell Alienware 16 Aurora<br>(2025)</h2>
+    <p class="price">39.690.000đ</p>
+    <button>Mua ngay</button>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ex9 -->
+    <div id="ex9" class="section">
+      <div class="head">
+        <div>
+          <h2>Bài tập 9 — Menu chính + menu con (dropdown)</h2>
+          <p>Menu chính nền tối; hover “Sản phẩm” hiện menu con dọc (CSS3/HTML5/PHP).</p>
+        </div>
+        <span class="pill">Ex9</span>
+      </div>
+      <div class="body">
+        <div class="iframe-wrap">
+          <iframe title="Ex9" style="height:420px" srcdoc='
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial;background:#fff}
+  .top{
+    background: linear-gradient(#4b4f5a, #2b2f39);
+    padding:12px 14px;
+  }
+  .menu{list-style:none;margin:0;padding:0;display:flex;gap:18px}
+  .menu>li{position:relative}
+  .menu>li>a{
+    color:#fff;text-decoration:none;padding:10px 14px;display:block;border-radius:8px;
+    opacity:.95
+  }
+  .menu>li>a:hover{background:rgba(0,0,0,.22)}
+  .menu>li>a.active{color:#7CFC00;font-weight:800}
+  .sub{
+    position:absolute;top:100%;left:0;
+    width:190px;background:#1f232c;border-radius:10px;
+    padding:10px;display:none;box-shadow:0 14px 30px rgba(0,0,0,.25)
+  }
+  .sub a{
+    display:flex;align-items:center;gap:10px;
+    color:#dfe6ff;text-decoration:none;
+    padding:10px 10px;border-radius:8px
+  }
+  .sub a:hover{background:rgba(255,255,255,.08)}
+  .sub a.active{color:#7CFC00;font-weight:800}
+  .dot{width:12px;height:12px;border-radius:3px;background:#6b7280;display:inline-block}
+  .has:hover .sub{display:block}
+
+  .hint{padding:18px;color:#333}
+  .box{
+    width:84%;max-width:760px;margin:20px auto;border:1px dashed #ccc;border-radius:12px;
+    padding:16px
+  }
+</style></head><body>
+  <div class="top">
+    <ul class="menu">
+      <li><a href="#" class="active">Trang chủ</a></li>
+      <li class="has">
+        <a href="#" class="active">Sản phẩm</a>
+        <div class="sub">
+          <a href="#"><span class="dot"></span><b>CSS3</b></a>
+          <a href="#" class="active"><span class="dot" style="background:#7CFC00"></span><b>HTML5</b></a>
+          <a href="#"><span class="dot" style="background:#f59e0b"></span><b>PHP</b></a>
+        </div>
+      </li>
+      <li><a href="#">Dịch vụ</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+  </div>
+
+  <div class="hint">
+    <div class="box">
+      Hover vào <b>Sản phẩm</b> để xem <b>menu con</b>.
+    </div>
+  </div>
+</body></html>'></iframe>
+        </div>
+      </div>
+    </div>
+
+ 
+
+  </div>
+</body>
+</html>

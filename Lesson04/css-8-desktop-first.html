@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop-first</title>
+    <style>
+        /* Desktop large mặc định */
+        .products{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        .card {
+            background: #06b35a;
+            padding: 1rem;
+            border-radius: .5rem;
+            text-align: center;
+            color: white;
+        }
+        /* Desktop */
+        @media (max-width: 1200px){
+            .products{
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        /* Tablet */
+        @media (max-width: 991px){
+             .products{
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        /* Mobile */
+        @media (max-width: 767px){
+             .products{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1> <b>Desktop-first là gì?:</b> </h1>
+        <p> Viết CSS cho desktop trước, sau đó thu nhỏ xuống tablet/mobile bằng max-width.</p>
+    </section>
+    <section class="products">
+        <div class="card">SP 1</div>
+        <div class="card">SP 2</div>
+        <div class="card">SP 3</div>
+        <div class="card">SP 4</div>
+        <div class="card">SP 5</div>
+        <div class="card">SP 6</div>
+    </section>
+</body>
+</html>

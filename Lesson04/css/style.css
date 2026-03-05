@@ -1,0 +1,36 @@
+@charset "UTF-8";
+:root {
+  --primary: #0d6efd; /* “đổ” biến SCSS vào CSS var */
+}
+.button {
+  background: #0d6efd;
+  border-radius: 12px;
+}
+.card {
+  padding: 16px;
+}
+.card .title {
+  font-weight: 700;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.btn {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--primary);
+}
+.btn--primary {
+  background: blue;
+}
+.btn--danger {
+  background: red;
+}
+.btn__icon {
+  margin-right: 8px;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu về BEM</title>
+    <style>
+        .card{
+            padding: 20px;
+            border-radius: 10px;
+            background: rgb(4, 223, 4)
+        }
+        .card__title{
+            font-size: 20px;
+        }
+        .card__price{
+            color: red;
+        }
+
+        .card__button{
+            padding: 10px;
+        }
+        .card--featured{
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="card card--featured">
+        <h3 class="card__title">Laptop Gaming</h3>
+        <p class="card__price">$999</p>
+        <button class="card__button">Buy</button>
+    </div>
+</body>
+</html>

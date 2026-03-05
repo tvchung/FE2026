@@ -1,0 +1,34 @@
+$primary: #0d6efd;
+$spacing: 16px;
+$radius: 12px;
+:root {
+  --primary: #{$primary}; /* “đổ” biến SCSS vào CSS var */
+}
+.button {
+  background: $primary;
+  border-radius: $radius;
+}
+.card {
+  padding: 16px;
+
+  .title {
+    font-weight: 700;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+.btn {
+  padding: $spacing;
+  border-radius: $radius;
+  background: var(--primary);
+}
+.btn {
+  &--primary { background: blue; }
+  &--danger { background: red; }
+
+  &__icon { margin-right: 8px; }
+
+  &:hover { opacity: .9; }
+}

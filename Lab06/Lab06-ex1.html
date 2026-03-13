@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login information</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 999px;
+            border: 1px solid green;
+            width: 100%;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <h1>Login information</h1>
+        <div>
+            <input type="text" id="username" name="username" placeholder="Username">
+        </div>
+        <div>
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+        <div>
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <div>
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</body>
+</html>

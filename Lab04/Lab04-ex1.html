@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product-box</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff9900;
+            --background-color: #f5f5f5;
+            --text-color: #333;
+            --border-radius: 10px;
+        }
+        .product-box {
+            width: 150px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            background: var(--background-color);
+            position: relative;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* góc gấp */
+        .corner {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 0;
+            height: 0;
+            border-top: 30px solid var(--primary-color);
+            border-left: 30px solid transparent;
+            border-top-right-radius: var(--border-radius);
+        }
+        .corner::after{
+            /* content:"✓"; */
+            content:"\f00c";
+            font-family: 'Font Awesome 5 Free';
+            position:absolute;
+            top:-25px;
+            right:5px;
+            color:#fff;
+            font-size:9px;
+            font-weight:bold;
+        }
+        /* tên */
+        .product-name {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        /* giá */
+        .product-price {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+        }
+        
+        .product-box:hover .corner::after{
+            animation: check-wiggle .6s ease;
+        }
+        @keyframes check-wiggle{
+
+            0%{
+                transform: rotate(0deg);
+            }
+
+            25%{
+                transform: rotate(-20deg);
+            }
+
+            50%{
+                transform: rotate(20deg);
+            }
+
+            75%{
+                transform: rotate(-10deg);
+            }
+
+            100%{
+                transform: rotate(0deg);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-box">
+        <div class="corner"></div>
+
+        <div class="product-name">
+            Macbook Air M4 | core GPU + 512GB
+        </div>
+
+        <div class="product-price">
+            28.790.000 VNĐ
+        </div>
+    </div>
+</body>
+
+</html>

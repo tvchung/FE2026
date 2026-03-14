@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm việc với mảng xâu</title>
+    <style>
+        body {
+            margin: 2rem;
+        }
+
+        div {
+            width: 640px;
+            margin: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid green;
+        }
+        span{
+            display: inline-block;
+            padding: 5px 10px;
+            text-align: center;
+            border: 1px solid green;
+            border-radius: 10px;
+            margin: 5px;
+            color: rgba(185, 5, 26, 0.799);
+        }
+        
+    </style>
+</head>
+
+<body style="font-family: monospace">
+    <script>
+
+        /* Hàm sinh từ ngẫu nhiên */
+        function generateRandomWord(minLen, maxLen) {
+            var length = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        /* Hàm sinh xâu ngẫu nhiên */
+        function generateRandomPhrase(numWords) {
+            var phrase = [];
+            for (var i = 0; i < numWords; i++) {
+                phrase.push(generateRandomWord(2, 5));
+            }
+            return phrase.join(' ');
+        }
+
+        /* Hàm kiểm tra xâu có ít nhất 3 từ */
+        function hasAtLeast3Words(str) {
+            return str.split(' ').length >= 3;
+        }
+
+        var arr = [];
+        var n = 10; // số phần tử
+
+        /* Sinh mảng ngẫu nhiên các xâu */
+        for (var i = 0; i < n; i++) {
+            var numWords = Math.floor(Math.random() * 2) + 2; // 2 or 3 words
+            var randomPhrase = generateRandomPhrase(numWords);
+            arr.push(randomPhrase);
+        }
+
+        /* In mảng */
+        document.write("<div> <h2>Mảng các xâu:<br/>");
+
+        for (var i = 0; i < arr.length; i++) {
+            document.write("<span>" + arr[i] + "</span> ");
+        }
+        document.write("<hr/>");
+
+        /* In các xâu có ít nhất 3 từ */
+        document.write("Các xâu có ít nhất 3 từ trong mảng:<br>");
+        var count = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (hasAtLeast3Words(arr[i])) {
+                document.write("<span>" + arr[i] + "</span> ");
+                count++;
+            }
+        }
+        document.write("==> Có <span>" + count + "</span> xâu có ít nhất 3 từ");
+
+        /* Sắp xếp mảng theo thứ tự alphabet */
+        arr.sort();
+
+        /* In mảng đã sắp xếp */
+        document.write("<hr/>");
+        document.write("Mảng sau khi sắp xếp theo alphabet:<br>");
+        for (var i = 0; i < arr.length; i++) {
+            document.write("<span>" + arr[i] + "</span> ");
+        }
+
+      
+
+    </script>
+</body>
+
+</html>

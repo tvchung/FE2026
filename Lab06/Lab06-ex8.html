@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinh mảng ngẫu nhiên các số tự nhiên có 2 chữ số</title>
+    <style>
+        body {
+            margin: 2rem;
+        }
+
+        div {
+            width: 640px;
+            margin: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid green;
+        }
+        span{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid green;
+            border-radius: 999px;
+            margin: 5px;
+            color: rgba(185, 5, 26, 0.799);
+        }
+        
+    </style>
+</head>
+
+<body style="font-family: monospace">
+    <script>
+
+        var arr = [];
+        var n = 10; // số phần tử
+
+        /* Sinh mảng ngẫu nhiên */
+
+        for (var i = 0; i < n; i++) {
+            var randomNumber = Math.floor(Math.random() * 90) + 10;
+            arr.push(randomNumber);
+        }
+
+        /* In mảng */
+        document.write("<div> <h2>Mảng ngẫu nhiên:<br/>");
+
+        for (var i = 0; i < arr.length; i++) {
+            document.write("<span>" + arr[i] + "</span> ");
+        }
+        document.write("<hr/>");
+        /* Hàm kiểm tra số nguyên tố */
+
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /* In các số nguyên tố */
+        document.write("Các số nguyên tố trong mảng:<br>");
+        var primeTotal = 0;
+        var primeCount = 0; 
+        for (var i = 0; i < arr.length; i++) {
+            if (isPrime(arr[i])) {
+                document.write("<span>" + arr[i] + "</span> ");
+                primeTotal +=arr[i];
+                primeCount++;
+            }
+        }
+        document.write("==> Có<span>" + primeCount + "</span> số nguyên tố và tổng <span>" + primeTotal + "</span>");
+        /* Sắp xếp mảng theo thứ tự tăng dần */
+        arr.sort(function(a, b) {
+            return a - b;
+        });
+        /* In mảng đã sắp xếp */
+        document.write("<hr/>");
+        document.write("Mảng sau khi sắp xếp tăng dần:<br>");
+        for (var i = 0; i < arr.length; i++) {
+            document.write("<span>" + arr[i] + "</span> ");
+        }
+
+      
+
+    </script>
+</body>
+
+</html>

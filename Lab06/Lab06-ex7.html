@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In tháp ký tự</title>
+    <style>
+        body {
+            margin: 2rem;
+        }
+
+        div {
+            width: 300px;
+            margin: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            border: 1px solid green;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body style="font-family: monospace">
+    <script>
+        var n = 10; // số dòng
+        document.write("<div> <h2>Tháp ký tự 10 dòng</h2> <hr/>");
+        for (var i = 0; i < n; i++) {
+
+            // in khoảng trắng để căn giữa
+            for (var j = 0; j < n - i - 1; j++) {
+                document.write("&nbsp;&nbsp;");
+            }
+
+            // phần tăng dần A → ...
+            for (var j = 0; j <= i; j++) {
+                document.write(String.fromCharCode(65 + j) + " ");
+            }
+
+            // phần giảm dần ... → A
+            for (var j = i - 1; j >= 0; j--) {
+                document.write(String.fromCharCode(65 + j) + " ");
+            }
+
+            document.write("<br>");
+        }
+        document.write("</div>");
+    </script>
+</body>
+</html>
